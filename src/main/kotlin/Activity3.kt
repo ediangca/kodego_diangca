@@ -1,4 +1,4 @@
-fun main(args: Array<String>) {
+fun main() {
 //    Design program Age Group that will determine if age belongs to underage, young adult, adult, senior.
 //    Under age is 1-17; young adult is from 18-30;
 //    adult is from 31-59; senior is from 60 or more.

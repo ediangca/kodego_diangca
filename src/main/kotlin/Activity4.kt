@@ -1,6 +1,6 @@
 
 
-fun main(args: Array<String>) {
+fun main() {
     var name:String? = null
     var needhehlp:String? = null
     var tryagain:String? = null

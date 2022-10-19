@@ -1,6 +1,6 @@
 import java.text.DecimalFormat
 
-fun main(args: Array<String>) {
+fun main() {
 //    Create a Kotlin program that will accept grades, then calculates and display their average grade.
 
     val g_math:Int = 78
