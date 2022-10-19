@@ -1,5 +1,16 @@
+import mu.KotlinLogging
 
 
+private val logger =  KotlinLogging.logger {
+}
 fun main() {
-//    private val logger =  KotlinLogging.logger{}
+
+    println("Logger")
+
+    logger.trace { "trace" }
+    logger.debug { "Debug" }
+    logger.info { "info" }
+    logger.error { "error" }
+
+
 }
