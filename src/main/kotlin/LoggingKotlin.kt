@@ -10,6 +10,7 @@ fun main() {
     logger.trace { "trace" }
     logger.debug { "Debug" }
     logger.info { "info" }
+    logger.warn { "warning" }
     logger.error { "error" }
 
 
