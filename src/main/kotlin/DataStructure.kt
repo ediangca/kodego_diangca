@@ -33,12 +33,12 @@ fun main() {
 
     } while ((index < userInput.length) && !found)
 
-    var  numbers:Int = 1234567890
-
+//    var  numbers:Int = 1234567890
+//
 //    for (number in numbers){
 //        logger.info("Number : $number")
 //    }
-
+//
 //    for (entry in characters.entries){
 //        logger.info("Key : ${entry.key} -> Value ${entry.value}")
 //    }
