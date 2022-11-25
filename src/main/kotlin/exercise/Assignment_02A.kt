@@ -20,9 +20,9 @@ var name: String? = null
 var arrNames = ArrayList<String>()
 var course: String? = null
 var arrCourse = ArrayList<String>()
-var progress_opt: Int = 0
+var progress_opt: Int? = 0
 var progress: String? = null
-var arrProgres = ArrayList<String>()
+var arrProgress = ArrayList<String>()
 var opt: String? = null
 
 var menu: Int? = null
@@ -57,25 +57,69 @@ fun main() {
             2 -> EditStudent()
             4 -> DisplayStudentList()
         }
-    } while (menu == 1)
+    } while (menu != 5)
 
 
 }
 
+//Edit Function
 fun EditStudent() {
     println("Enter the name of Student")
     name = readLine().toString()
     //Loop for mapping record
     var ctr: Int = 0;
+    var index: Int = 0;
 
     for (value in arrNames) {
         if (value.equals(name, true)) {
             println("$value found @ index: $ctr")
+            println("Details - - - - - - - - - - - - - - - - -")
+            println("Name: ${arrNames[ctr]}")
+            println("Course: ${arrCourse[ctr]}")
+            println("Progress: ${arrProgress[ctr]}")
+            index = ctr;
         }
         ctr++
     }
+    println("Do you really want to proceed editing data? [Y|N]")
+    var confirm = readLine() ?: "Y"
+    if (confirm[0].equals('Y', true) || confirm.equals("Yes", true)) {
+
+        println("Please enter Student name: <${arrNames[index]}>")
+        name = readLine()!!.toString()
+        arrNames[index] = if (name!!.isEmpty()) arrNames[index] else name.toString()
+        println("Please enter Course attained :  <${arrCourse[index]}>")
+        course = readLine()!!.toString()
+        arrCourse[index] = if (course!!.isEmpty()) arrCourse[index] else course.toString()
+        println(
+            "Please choose level of your progress: <${arrProgress[index]}>\n" +
+                    "[1] EXCELLENT \n" +
+                    "[2] VERY GOOD \n" +
+                    "[3] GOOD \n" +
+                    "[4] NEED ASSISTANCE"
+        )
+
+        progress_opt = try {
+            readLine()?.toInt() ?: 0
+        } catch (e: Exception) {
+            logger.error { e.message }
+            0
+        }
+
+        when (progress_opt) {
+            1 -> progress = "EXCELLENT"
+            2 -> progress = "VERY GOOD"
+            3 -> progress = "GOOD"
+            4 -> progress = "NEED ASSISTANCE"
+            else -> progress = "${arrProgress[index]}"
+        }
+        arrProgress[index] = (progress ?: "$arrProgress[index]")
+
+        println("Data has been Successfully updated!")
+    }
 }
 
+//Display Function
 fun DisplayStudentList() {
     println("List of Student")
 
@@ -85,10 +129,12 @@ fun DisplayStudentList() {
 //            index++
 //        }
 //    }
+    println("Index\tName\t\tCourse\tProgress")
     for (ctr in 0 until arrNames.size)
-        println("$index : ${arrNames[ctr]} \t ${arrCourse[ctr]} \t ${arrProgres[ctr]}")
+        println("$ctr \t\t${arrNames[ctr]}\t\t${arrCourse[ctr]} \t ${arrProgress[ctr]}")
 }
 
+//Add Function
 fun AddStudent() {
 
     println("Please enter Student name:")
@@ -105,25 +151,23 @@ fun AddStudent() {
                 "[4] NEED ASSISTANCE"
     )
 
-    progress_opt = readLine()!!.toInt()
+    progress_opt = try {
+        readLine()?.toInt() ?: 0
+    } catch (e: Exception) {
+        logger.error { e.message }
+        0
+    }
 
     when (progress_opt) {
         1 -> progress = "EXCELLENT"
         2 -> progress = "VERY GOOD"
         3 -> progress = "GOOD"
         4 -> progress = "NEED ASSISTANCE"
-        else -> "NO PROGRESS"
+        else -> progress = "NO PROGRESS"
     }
-    arrProgres.add(progress ?: "No Data")
+    arrProgress.add(progress ?: "No Data")
 
-//    println("Name: $name")
-//    println("Course: $course")
-//    println("Remarks: $progress")
+    println("Data has been Successfully saved!")
 
-    /*studentlist.add(
-        arrayListOf(
-            arrayListOf(name, progress, course)
-        )
-    )*/
 }
 

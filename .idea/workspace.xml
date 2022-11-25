@@ -5,30 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa675f3b-b95f-4bb1-8b6e-8083993a3846" name="Changes" comment="KODEGO MD2P">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/data_structures/Array_00.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/data_structures/Array_01.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/data_structures/Collections_00.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01G.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01I.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01J.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_02A.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/function.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/functions/Functions_00.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/functions/Functions_01.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/functions/Functions_02.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/functions/Functions_03.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/functions/Functions_04.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/functions/Functions_05.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/functions/Functions_06.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/functions/Functions_07.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/testing/Calculator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/testing/CalculatorTester.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01A.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01A.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01B.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01B.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01C.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01C.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01D.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01D.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01E.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_01F.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_02A.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_02A.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Kotlin File" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -218,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666777930714</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="KODEGO MD2P">
+      <created>1669043629592</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1669043629592</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -235,6 +223,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="KODEGO MD2P" />
     <option name="LAST_COMMIT_MESSAGE" value="KODEGO MD2P" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
