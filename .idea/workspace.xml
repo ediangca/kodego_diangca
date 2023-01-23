@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa675f3b-b95f-4bb1-8b6e-8083993a3846" name="Changes" comment="KODEGO MD2P">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/testing/Calculator.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/testing/CalculatorTester.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_02A.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/exercise/Assignment_02A.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/LoggingKotlin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/LoggingKotlin.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,23 +64,16 @@
       <recent name="C:\Users\edian\IdeaProjects\MD2P\src\main\kotlin" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.Assignment_02AKt">
+  <component name="RunManager" selected="Kotlin.LoggingKotlinKt">
+    <configuration name="Activity1Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Activity1Kt" />
+      <module name="MD2P.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Assignment_01AKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="exercise.Assignment_01AKt" />
-      <module name="MD2P.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Assignment_01GKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exercise.Assignment_01GKt" />
-      <module name="MD2P.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Assignment_01IKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exercise.Assignment_01IKt" />
       <module name="MD2P.main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -103,13 +93,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LoggingKotlinKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="LoggingKotlinKt" />
+      <module name="MD2P.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.LoggingKotlinKt" />
+        <item itemvalue="Kotlin.Activity1Kt" />
         <item itemvalue="Kotlin.Assignment_02AKt" />
         <item itemvalue="Kotlin.Assignment_01AKt" />
         <item itemvalue="Kotlin.Assignment_01JKt" />
-        <item itemvalue="Kotlin.Assignment_01IKt" />
-        <item itemvalue="Kotlin.Assignment_01GKt" />
       </list>
     </recent_temporary>
   </component>
