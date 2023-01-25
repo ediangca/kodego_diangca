@@ -1,4 +1,4 @@
-package exercise
+package activity.`01`
 import mu.KotlinLogging
 /*
 Create an application that will accept 1 string.

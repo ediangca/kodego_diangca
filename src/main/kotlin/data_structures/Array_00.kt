@@ -5,7 +5,19 @@ fun main(){
 //    String names[] = {"123", };
      var arrNames = arrayOf<String>("Marco", "Maricris", "Jose Marie", "Marichelle")
 
+    for(index in arrNames.indices)
+        println("$index : ${arrNames[index]}")
+
+    arrNames = arrayOf<String>("Marco1", "Maricris2", "Jose Marie3", "Marichelle4")
+
+    for(index in arrNames.indices)
+        println("$index : ${arrNames[index]}")
+
     val arrRandom:Array<Any?> = arrayOf("Marco", 42, false, null)
+    for(value in arrRandom) {
+        println("Valule : $value")
+    }
+
     var arrNumbers: IntArray = intArrayOf(1, 2, 3, 4,)
     var myArray2 = arrayOf<Int>(1,10,4,6,15)
 
@@ -16,19 +28,9 @@ fun main(){
 
     arrValues[0] = "New Value"
 
-    for(index in arrNames.indices)
-        println("$index : ${arrNames[index]}")
 
     for(index in 0 until arrValues.size)
         println("$index : ${arrValues[index]}")
 
-    for(value in arrRandom) {
-        println("Valule : $value")
-    }
-
-    arrNames = arrayOf<String>("Marco1", "Maricris2", "Jose Marie3", "Marichelle4")
-
-    for(index in arrNames.indices)
-        println("$index : ${arrNames[index]}")
 
 }

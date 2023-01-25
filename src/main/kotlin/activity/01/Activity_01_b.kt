@@ -1,4 +1,4 @@
-package exercise
+package activity.`01`
 import java.util.Date
 import java.text.SimpleDateFormat
 /*

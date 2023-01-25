@@ -1,7 +1,6 @@
-package exercise
+package activity.`01`
 
 import mu.KotlinLogging
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 

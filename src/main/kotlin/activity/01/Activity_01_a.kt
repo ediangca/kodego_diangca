@@ -1,4 +1,4 @@
-package exercise
+package activity.`01`
 /*
 You are tasked to automate an inventory system for a grocery.
 Identify the items that can be bought in a grocery store.

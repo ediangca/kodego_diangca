@@ -1,4 +1,4 @@
-package exercise
+package activity
 fun main() {
 //    println("Application for Employment")
     var position:String = "Software Engineer"

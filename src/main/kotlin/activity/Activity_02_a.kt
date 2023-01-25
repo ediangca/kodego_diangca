@@ -1,6 +1,4 @@
-package exercise
-
-import mu.KotlinLogging
+package activity
 
 /**
 Activity 01
@@ -13,25 +11,22 @@ You are also tasked to group the items in categories to help manage the grocery.
 Implement Activity 01 -  A using data structure.
  **/
 
-var studentlist: ArrayList<ArrayList<Any>> = ArrayList()
+private var studentlist: ArrayList<ArrayList<Any>> = ArrayList()
 
 
-var name: String? = null
-var arrNames = ArrayList<String>()
-var course: String? = null
-var arrCourse = ArrayList<String>()
-var progress_opt: Int? = 0
-var progress: String? = null
-var arrProgress = ArrayList<String>()
-var opt: String? = null
+private var name: String? = null
+private var arrNames = ArrayList<String>()
+private var course: String? = null
+private var arrCourse = ArrayList<String>()
+private var progress_opt: Int? = 0
+private var progress: String? = null
+private var arrProgress = ArrayList<String>()
+private var opt: String? = null
 
-var menu: Int? = null
+private var menu: Int? = null
 
 private var index: Int = 0;
 
-
-private val logger = KotlinLogging.logger {
-}
 
 fun main() {
 
@@ -48,7 +43,7 @@ fun main() {
                 readLine()?.toInt() ?: 1
             } catch (e: Exception) {
                 validmenu = false
-                logger.error { e.message }
+                activity.Logger().log.error { e.message }
                 1
             }
         } while (!validmenu)
@@ -62,8 +57,44 @@ fun main() {
 
 }
 
+//Add Function
+private fun AddStudent() {
+
+    println("Please enter Student name:")
+    name = readLine().toString()
+    arrNames.add(name ?: "Unknown")
+    println("Please enter Course attained:")
+    course = readLine().toString()
+    arrCourse.add(course ?: "No Course")
+    println(
+        "Please choose level of your progress:\n" +
+                "[1] EXCELLENT \n" +
+                "[2] VERY GOOD \n" +
+                "[3] GOOD \n" +
+                "[4] NEED ASSISTANCE"
+    )
+
+    progress_opt = try {
+        readLine()?.toInt() ?: 0
+    } catch (e: Exception) {
+        activity.Logger().log.error { e.message }
+        0
+    }
+
+    when (progress_opt) {
+        1 -> progress = "EXCELLENT"
+        2 -> progress = "VERY GOOD"
+        3 -> progress = "GOOD"
+        4 -> progress = "NEED ASSISTANCE"
+        else -> progress = "NO PROGRESS"
+    }
+    arrProgress.add(progress ?: "No Data")
+
+    println("Data has been Successfully saved!")
+
+}
 //Edit Function
-fun EditStudent() {
+private fun EditStudent() {
     println("Enter the name of Student")
     name = readLine().toString()
     //Loop for mapping record
@@ -102,7 +133,7 @@ fun EditStudent() {
         progress_opt = try {
             readLine()?.toInt() ?: 0
         } catch (e: Exception) {
-            logger.error { e.message }
+            activity.Logger().log.error { e.message }
             0
         }
 
@@ -120,7 +151,7 @@ fun EditStudent() {
 }
 
 //Display Function
-fun DisplayStudentList() {
+private fun DisplayStudentList() {
     println("List of Student")
 
 //    for (element in studentlist) {
@@ -134,40 +165,4 @@ fun DisplayStudentList() {
         println("$ctr \t\t${arrNames[ctr]}\t\t${arrCourse[ctr]} \t ${arrProgress[ctr]}")
 }
 
-//Add Function
-fun AddStudent() {
-
-    println("Please enter Student name:")
-    name = readLine().toString()
-    arrNames.add(name ?: "Unknown")
-    println("Please enter Course attained:")
-    course = readLine().toString()
-    arrCourse.add(course ?: "No Course")
-    println(
-        "Please choose level of your progress:\n" +
-                "[1] EXCELLENT \n" +
-                "[2] VERY GOOD \n" +
-                "[3] GOOD \n" +
-                "[4] NEED ASSISTANCE"
-    )
-
-    progress_opt = try {
-        readLine()?.toInt() ?: 0
-    } catch (e: Exception) {
-        logger.error { e.message }
-        0
-    }
-
-    when (progress_opt) {
-        1 -> progress = "EXCELLENT"
-        2 -> progress = "VERY GOOD"
-        3 -> progress = "GOOD"
-        4 -> progress = "NEED ASSISTANCE"
-        else -> progress = "NO PROGRESS"
-    }
-    arrProgress.add(progress ?: "No Data")
-
-    println("Data has been Successfully saved!")
-
-}
 
