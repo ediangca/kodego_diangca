@@ -1,6 +1,5 @@
-package activity
+package activity.`02`
 
-import mu.KotlinLogging
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -33,15 +32,12 @@ private var menu: Int? = null
 private var index: Int = 0;
 
 
-private val logger = KotlinLogging.logger {
-}
-
 fun main() {
 
 
     println("----- Welcome to Automate a school’s library -----")
     do {
-        println("please select a menu [1]New Borrowee [2]Edit [3]Delete [4]Display [5]Exit")
+        println("please select a menu [1]New Borrowee [2]Edit [3]Display [5]Exit")
 
         var validmenu: Boolean = true
         do {
@@ -51,22 +47,22 @@ fun main() {
                 readLine()?.toInt() ?: 1
             } catch (e: Exception) {
                 validmenu = false
-                logger.error { e.message }
+                activity.Logger().log.error { e.message }
                 1
             }
         } while (!validmenu)
         when (menu) {
             1 -> AddBorrowee()
             2 -> EditBorrowee()
-            4 -> DisplayBorrowedList()
+            3 -> DisplayBorrowedList()
         }
-    } while (menu != 5)
+    } while (menu == 1 || menu == 2 || menu == 3)
 
 
 }
 
 //Add Function
-fun AddBorrowee() {
+private fun AddBorrowee() {
 
     println("Please enter Borrowee name:")
     name = readLine().toString()

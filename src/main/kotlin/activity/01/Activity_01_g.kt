@@ -22,6 +22,7 @@ fun main(args: Array<String>) {
 
     var stringInput: String? = null
 
+    println("Please enter a String:")
     stringInput = readLine()
 
     if(stringInput == null){
@@ -42,7 +43,6 @@ fun main(args: Array<String>) {
         logger.error{ "The given string is NOT a Palindrome" }
     }
 }
-
 
 
 // Checking Palindrome using StringBuilder method

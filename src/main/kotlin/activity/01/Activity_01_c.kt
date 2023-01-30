@@ -3,7 +3,7 @@ package activity.`01`
 import java.util.*
 import kotlin.collections.ArrayList
 
-/*
+/**
 You are tasked to automate an inventory system for a grocery.
 Identify the items that can be bought in a grocery store.
 After listing the different items, identify the characteristics of the items.
@@ -20,7 +20,8 @@ fun main() {
     var date: Date? = Date()
     var bought: String? = null
 
-    var list:ArrayList<String> = ArrayList<String>()
+//    var list: ArrayList<String> = ArrayList<String>()
+    var listitem: ArrayList<ArrayList<Any>> = ArrayList()
 
     var opt: String? = "N"
 
@@ -45,11 +46,11 @@ fun main() {
             0
         }
         when (categoryopt) {
-            1 -> category = "EXCELLENT"
-            2 -> category = "VERY GOOD"
-            3 -> category = "GOOD"
-            4 -> category = "NEED ASSISTANCE"
-            else -> category = "NO PROGRESS"
+            1 -> category = "FOOD"
+            2 -> category = "NON-FOOD"
+            3 -> category = "MEDICINE"
+            4 -> category = "EQUIPMENT|SUPPLY"
+            else -> category = "UNKNOWN"
         }
 
         println("Please enter Qty")
@@ -66,17 +67,25 @@ fun main() {
         bought = if (bought.get(0).uppercase() == "Y") "Yes" else "Not"
 
 
-        list.addAll(listOf(itemNo, item, category, qty.toString(), bought))
-
+//        list.addAll(listOf(itemNo, item, category, qty.toString(), bought))
+        listitem.add(
+            arrayListOf(
+                arrayListOf(itemNo, item, category, qty.toString(), bought)
+            )
+        )
 
         println("Do you want to add more Item? Yes|No")
         opt = readLine() ?: "No"
 
-    } while (opt.equals("Y",true) || opt.equals("Yes",true))
+    } while (opt.equals("Y", true) || opt.equals("Yes", true))
 
-    for(value in list) {
-        println("list : $value")
+    println("List of Item")
+    var index: Int = 0
+
+    for (element in listitem) {
+        for (inner_element in element) {
+            println("$index --> $inner_element")
+            index++
+        }
     }
-    for(index in list.indices)
-        println("$index : ${list[index]}")
 }

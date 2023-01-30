@@ -9,33 +9,35 @@ Note: Error checking must be done.
 
 
 fun main() {
-    var amount = 0.0
+    var amount:Int = 0
     var inputagain:String ? = null
+    var ctr:Int = 0
 
     do{
 
         amount += try {
             print("Please Enter Amount : ")
-            readLine()!!.toDouble()
+            readLine()!!.toInt()
         } catch (x: Exception) {
             println(x.message + " 0.0 as default value")
-            0.0
+            0
         }
-        println("Please Do you want to add another amount?")
-        inputagain = readLine()?: "No"
+//        println("Please Do you want to add another amount?")
+//        inputagain = readLine()?: "No"
+        ctr++
+    }while (ctr < 5)
+//    }while (inputagain.equals("Y",true) || inputagain.equals("Yes",true))
 
-    }while (inputagain.equals("Y",true) || inputagain.equals("Yes",true))
-
-    val secondinput: Double = try {
-        println("Divide the value by how many?")
-        readLine()!!.toDouble()
+    val secondinput: Int = try {
+        println("Divide the total by : ")
+        readLine()!!.toInt()
     } catch (x: Exception) {
         println(x.message + " 0.0 as default value")
-        0.0
+        0
     }
 
     println("Total amount $amount")
-    println(amount.div(secondinput))
+    println("Average ${amount.div(secondinput)}")
 
 }
 

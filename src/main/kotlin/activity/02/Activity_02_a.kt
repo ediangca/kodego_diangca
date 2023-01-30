@@ -1,4 +1,4 @@
-package activity
+package activity.`02`
 
 /**
 Activity 01
@@ -33,7 +33,7 @@ fun main() {
 
     println("----- Welcome to Student Address Book -----")
     do {
-        println("please select a menu [1]New Student [2]Edit [3]Delete [4]Display [5]Exit")
+        println("please select a menu [1]New Student [2]Edit [3]Display [5]Exit")
 
         var validmenu: Boolean = true
         do {
@@ -50,9 +50,9 @@ fun main() {
         when (menu) {
             1 -> AddStudent()
             2 -> EditStudent()
-            4 -> DisplayStudentList()
+            3-> DisplayStudentList()
         }
-    } while (menu != 5)
+    } while (menu == 1 || menu == 2 || menu == 3)
 
 
 }
