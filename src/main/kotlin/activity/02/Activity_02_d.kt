@@ -1,8 +1,5 @@
 package activity.`02`
 
-import java.util.*
-import activity.Logger
-
 
 /**
 Create an application that will accept 5 monetary amounts.
@@ -15,10 +12,9 @@ Implement Activity 01 - D using data structure.
 
  **/
 
-private var menu: Int? = null
 
 fun main() {
-
+    var menu: Int? = null
     var amount: Int = 0
     var arramount = ArrayList<Int>()
 
@@ -34,7 +30,7 @@ fun main() {
                 readLine()?.toInt() ?: 1
             } catch (e: Exception) {
                 validmenu = false
-                activity.Logger().log.error { e.message }
+                activity.Logger().log.error { e.message + "\n Please try again."}
                 1
             }
         } while (!validmenu)
@@ -73,7 +69,8 @@ fun main() {
                     readLine()!!.toInt()
                 } catch (x: Exception) {
                     valid = false
-                    println(x.message + " 0.0 as default value")
+                    activity.Logger().log.error { x.message + " --> 0.0 as default value" }
+                    println()
                     0
                 }
                 if (!valid) {
@@ -89,14 +86,12 @@ fun main() {
             }
 
         } else if (menu == 3) {
-            var index: Int = 0
             var sum: Int = 0
             println("List of Amount")
             println("Index\tAmount")
-            for (amt in arramount) {
+            for ((index, amt) in arramount.withIndex()) {
                 println("$index \t\t $amt")
                 sum += amt
-                index++
             }
             println("Total Amount: $sum")
 
@@ -106,17 +101,15 @@ fun main() {
                 println("Please enter an Integer to Divide the total by :")
                 readLine()!!.toInt()
             } catch (x: Exception) {
-                println(x.message + " 0.0 as default value")
+                activity.Logger().log.error { x.message + " --> 0.0 as default value" }
                 0
             }
-            var index: Int = 0
             var sum: Int = 0
             println("List of Amount")
             println("Index\tAmount")
-            for (amt in arramount) {
+            for ((index, amt) in arramount.withIndex()) {
                 println("$index \t\t $amt")
                 sum += amt
-                index++
             }
             println("Total Amount: $sum")
             println(sum.div(secondinput))

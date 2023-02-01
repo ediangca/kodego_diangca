@@ -2,6 +2,7 @@ package activity.`01`
 
 import mu.KotlinLogging
 import java.util.*
+import kotlin.collections.ArrayList
 
 /*Using Activity 01 - B, Implement a process where someone can borrow a book.
 User: Librarian
@@ -51,7 +52,7 @@ fun main() {
 
     val list = arrayListOf("English", "Math", "Science", "Filipino", "Values")
 
-    var borrowedbook: ArrayList<ArrayList<Any>> = ArrayList()
+    var borrowedbook = ArrayList<ArrayList<String>>()
 
     do {
         var option: Int? = null;
@@ -102,16 +103,13 @@ fun main() {
                 if (confirmInput != null) {
                     if (confirmInput[0].equals('Y', true) || confirmInput.equals("Yes", true)) {
                         activity.Logger().log.info { "Please wait! Saving Record.." }
-                        borrowedbook.add(
-                            arrayListOf(
-                                arrayListOf(
-                                    borrower.toString().toUpperCase(),
-                                    book.toString().toUpperCase(),
-                                    dateBorrowed.toString(),
-                                    dateReturn
-                                )
-                            )
-                        )
+                        var data = ArrayList<String>()
+                        data.add(borrower.toString().toUpperCase())
+                        data.add(book.toString().toUpperCase())
+                        data.add(dateBorrowed.toString())
+                        data.add(dateReturn)
+                        data.add(daystoborrow.toString())
+                        borrowedbook.add(data)
                         activity.Logger().log.info { "Data has been successfully saved!" }
                         index++
                     } else {
@@ -130,17 +128,19 @@ fun main() {
 
 }
 
-fun display(list: ArrayList<ArrayList<Any>>) {
+fun display(list: ArrayList<ArrayList<String>>) {
     println("List of Borrowed")
     var index: Int = 0
 
-    println("INDEX --> NAME | BOOK | DATE BORROWED | DATE RETURN")
+    println("INDEX --> NAME | BOOK | DATE BORROWED | DATE RETURN | DURATION (DAYS)")
     println("------------------------------------------------------")
     for (element in list) {
+        print("$index\t")
         for (inner_element in element) {
-            println("$index --> $inner_element")
+            print(" | $inner_element")
             index++
         }
+        println()
     }
     if (index == 0){
         println("There's no record yet added.")
