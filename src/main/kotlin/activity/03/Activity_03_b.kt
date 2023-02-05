@@ -82,23 +82,16 @@ fun main() {
             } while (book.isEmpty())
             if (isBookInRecord(book)) println("Found Record!") else println("No Record!")
         } else if (menu == 6) {
-            var arrstring = ArrayList<String>()
-            var confirm = ""
             do {
-
-                do {
-                    print("Please enter Book Name: ")
-                    book = readLine() ?: ""
-                    if (book.isEmpty()) {
-                        activity.Logger().log.info { "Invalid empty input. Please try again!" }
-                    }
-                } while (book.isEmpty())
-                arrstring.add(book)
-                print("Do you really want to add more input? [Y|N]")
-                var confirm = readLine() ?: "Y"
-            } while (confirm[0].equals('Y', true) || confirm.equals("Yes", true))
-            if (searchBookWildSearch(arrstring).isNotEmpty()) for ((index, book) in arrBook.withIndex())
-                println("Index\tName \n $index\t\t$book") else activity.Logger().log.warn { "No Record" }
+                print("Please enter Book Name: ")
+                book = readLine() ?: ""
+                if (book.isEmpty()) {
+                    activity.Logger().log.info { "Invalid empty input. Please try again!" }
+                }
+            } while (book.isEmpty())
+            println("Book")
+            for (b in searchBookWildSearch(book))
+                println("$b")
         } else if (menu == 7) {
             var arrstring = ArrayList<String>()
             var confirm = ""
@@ -200,19 +193,17 @@ fun countBooks(): Int {
     return arrBook.size
 }
 
-fun searchBookWildSearch(arrname: ArrayList<String>): ArrayList<String> {
+fun searchBookWildSearch(stringbook: String): ArrayList<String> {
     var foundbook = ArrayList<String>()
-    for (name in arrname) {
-        for (book in arrBook) {
-            if (book.equals(name, true)) {
-                foundbook.add(book)
-            }
+    for (book in arrBook) {
+        if (book.contains(stringbook, true)) {
+            foundbook.add(book)
         }
     }
     if (foundbook.isEmpty()) {
         activity.Logger().log.warn { "No Record" }
     } else {
-        activity.Logger().log.info { "Number of record found : ${foundbook.size + 1}" }
+        activity.Logger().log.info { "Number of record found : ${foundbook.size}" }
     }
 
     return foundbook
@@ -230,7 +221,7 @@ fun searchBookName(arrname: ArrayList<String>): ArrayList<String> {
     if (foundbook.isEmpty()) {
         activity.Logger().log.warn { "No Record" }
     } else {
-        activity.Logger().log.info { "Number of record found : ${foundbook.size + 1}" }
+        activity.Logger().log.info { "Number of record found : ${foundbook.size}" }
     }
 
     return foundbook

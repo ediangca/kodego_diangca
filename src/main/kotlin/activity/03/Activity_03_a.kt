@@ -32,7 +32,7 @@ fun main() {
      */
     println("----- Simple Student Address book -----")
     do {
-        println("Please select a menu \n [1]Add [2]Edit [3]Delete [4]countStudent [5]isStudentInRecord  [6]WildSearch [7]StudentNameSearch [8]StudentSearch [9]showStudents [10]Exit")
+        println("Please select a menu \n [1]Add [2]Edit [3]Delete [4]countStudent [5]isStudentInRecord [6]WildSearch [7]StudentNameSearch [8]StudentSearch [9]showStudents [10]Exit")
 
         var validmenu: Boolean = true
         do {
@@ -55,7 +55,7 @@ fun main() {
 
         if (menu == 1) {
             do {
-                print("Please enter Student Name to edit: ")
+                print("Please enter Student Name: ")
                 name = readLine() ?: ""
                 name = name.replace("\\s".toRegex(), "")
                 if (name.isEmpty()) {
@@ -94,59 +94,41 @@ fun main() {
             } while (name.isEmpty())
             if (isStudentInRecord(name)) println("Found Record!") else println("No Record!")
         } else if (menu == 6) {
-            var arrstring = ArrayList<String>()
             var confirm = ""
             do {
-
-                do {
-                    print("Please enter Student Name: ")
-                    name = readLine() ?: ""
-                    if (name.isEmpty()) {
-                        activity.Logger().log.info { "Invalid empty input. Please try again!" }
-                    }
-                } while (name.isEmpty())
-                arrstring.add(name)
-                print("Do you really want to add more input? [Y|N]")
-                var confirm = readLine() ?: "Y"
-            } while (confirm[0].equals('Y', true) || confirm.equals("Yes", true))
-            if (searchStudentWildSearch(arrstring).isNotEmpty()) for ((index, student) in arrstudent.withIndex())
-                println("Index\tName \n $index\t\t$student") else activity.Logger().log.warn { "No Record" }
+                print("Please enter String: ")
+                name = readLine() ?: ""
+                if (name.isEmpty()) {
+                    activity.Logger().log.info { "Invalid empty input. Please try again!" }
+                }
+            } while (name.isEmpty())
+            println("Student")
+            for (student in searchStudentWildSearch(name))
+                println("$student")
         } else if (menu == 7) {
-            var arrstring = ArrayList<String>()
             var confirm = ""
             do {
-
-                do {
-                    print("Please enter Student Name: ")
-                    name = readLine() ?: ""
-                    if (name.isEmpty()) {
-                        activity.Logger().log.info { "Invalid empty input. Please try again!" }
-                    }
-                } while (name.isEmpty())
-                arrstring.add(name)
-                print("Do you really want to add more input? [Y|N]")
-                var confirm = readLine() ?: "Y"
-            } while (confirm[0].equals('Y', true) || confirm.equals("Yes", true))
-            if (searchStudentName(arrstring).isNotEmpty()) for ((index, student) in arrstudent.withIndex())
-                println("Index\tName \n $index\t\t$student") else activity.Logger().log.warn { "No Record" }
+                print("Please enter Student Name: ")
+                name = readLine() ?: ""
+                if (name.isEmpty()) {
+                    activity.Logger().log.info { "Invalid empty input. Please try again!" }
+                }
+            } while (name.isEmpty())
+            println("Student")
+            for (student in searchStudentName(name))
+                println("$student")
         } else if (menu == 8) {
-            var arrstring = ArrayList<String>()
             var confirm = ""
             do {
-
-                do {
-                    print("Please enter Student Name: ")
-                    name = readLine() ?: ""
-                    if (name.isEmpty()) {
-                        activity.Logger().log.info { "Invalid empty input. Please try again!" }
-                    }
-                } while (name.isEmpty())
-                arrstring.add(name)
-                print("Do you really want to add more input? [Y|N]")
-                var confirm = readLine() ?: "Y"
-            } while (confirm[0].equals('Y', true) || confirm.equals("Yes", true))
-            if (searchStudent(arrstring).isNotEmpty()) for ((index, student) in arrstudent.withIndex())
-                println("Index\tName \n $index\t\t$student") else activity.Logger().log.warn { "No Record" }
+                print("Please enter String: ")
+                name = readLine() ?: ""
+                if (name.isEmpty()) {
+                    activity.Logger().log.info { "Invalid empty input. Please try again!" }
+                }
+            } while (name.isEmpty())
+            println("Student")
+            for (student in searchStudent(name))
+                println("$student")
         } else if (menu == 9) {
             showStudents()
         } else exitProcess(0)
@@ -229,47 +211,43 @@ fun countStudent(): Int {
     return arrstudent.size
 }
 
-fun searchStudentWildSearch(arrname: ArrayList<String>): ArrayList<String> {
+fun searchStudentWildSearch(stringname: String): ArrayList<String> {
     var foundstudent = ArrayList<String>()
-    for (name in arrname) {
-        for (student in arrstudent) {
-            if (student.equals(name, true)) {
-                foundstudent.add(student)
-            }
+    for (student in arrstudent) {
+        if (student.contains(stringname, true)) {
+            foundstudent.add(student)
         }
     }
     if (foundstudent.isEmpty()) {
         activity.Logger().log.warn { "No Record" }
     } else {
-        activity.Logger().log.info { "Number of record found : ${foundstudent.size + 1}" }
+        activity.Logger().log.info { "Number of record found : ${foundstudent.size}" }
     }
 
     return foundstudent
 }
 
-fun searchStudentName(arrname: ArrayList<String>): ArrayList<String> {
+fun searchStudentName(stringname: String): ArrayList<String> {
     var foundstudent = ArrayList<String>()
-    for (name in arrname) {
-        for (student in arrstudent) {
-            if (student.equals(name, true)) {
-                foundstudent.add(student)
-            }
+    for (student in arrstudent) {
+        if (student.equals(stringname, true)) {
+            foundstudent.add(student)
         }
     }
     if (foundstudent.isEmpty()) {
         activity.Logger().log.warn { "No Record" }
     } else {
-        activity.Logger().log.info { "Number of record found : ${foundstudent.size + 1}" }
+        activity.Logger().log.info { "Number of record found : ${foundstudent.size}" }
     }
 
     return foundstudent
 }
 
-fun searchStudent(arrstring: ArrayList<String>): ArrayList<String> {
-    if (arrstring.size in 1..3) {
-        return searchStudentWildSearch(arrstring)
+fun searchStudent(stringname: String): ArrayList<String> {
+    if (stringname.length in 1..3) {
+        return searchStudentWildSearch(stringname)
     } else {
-        return searchStudentName(arrstring)
+        return searchStudentName(stringname)
     }
 }
 

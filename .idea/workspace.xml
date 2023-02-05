@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa675f3b-b95f-4bb1-8b6e-8083993a3846" name="Changes" comment="KODEGO MD2P &#10;&#10;Done with Activity 3 ABC">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/activity/04/Activity_04_a.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/activity/04/Stud.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/activity/04/Student.kt" afterDir="false" />
+    <list default="true" id="fa675f3b-b95f-4bb1-8b6e-8083993a3846" name="Changes" comment="KODEGO MD2P &#10;&#10;Working with Activity 4">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/activity/04/Activity_04_b.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/activity/04/Activity_04_c.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_d.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_d.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/03/Activity_03_a.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/03/Activity_03_a.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/03/Activity_03_b.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/03/Activity_03_b.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/04/Activity_04_a.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/04/Activity_04_a.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/04/Student.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/Application.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +59,11 @@
     "project.structure.side.proportion": "0.45402297",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "JAVA"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -70,30 +79,23 @@
       <recent name="C:\Users\edian\IdeaProjects\MD2P\src\main\kotlin" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.ApplicationKt">
-    <configuration name="Activity_01_IKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="activity.01.Activity_01_IKt" />
+  <component name="RunManager">
+    <configuration name="Activity_01_dKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="activity.01.Activity_01_dKt" />
       <module name="MD2P.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Activity_01_bKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="activity.01.Activity_01_bKt" />
+    <configuration name="Activity_03_aKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="activity.03.Activity_03_aKt" />
       <module name="MD2P.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Activity_01_cKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="activity.01.Activity_01_cKt" />
-      <module name="MD2P.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Activity_02_cKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="activity.02.Activity_02_cKt" />
+    <configuration name="Activity_04_aKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="activity.04.Activity_04_aKt" />
       <module name="MD2P.main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -106,13 +108,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Functions_05Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="functions.Functions_05Kt" />
+      <module name="MD2P.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.Activity_04_aKt" />
+        <item itemvalue="Kotlin.Activity_03_aKt" />
+        <item itemvalue="Kotlin.Activity_01_dKt" />
+        <item itemvalue="Kotlin.Functions_05Kt" />
         <item itemvalue="Kotlin.ApplicationKt" />
-        <item itemvalue="Kotlin.Activity_01_bKt" />
-        <item itemvalue="Kotlin.Activity_01_IKt" />
-        <item itemvalue="Kotlin.Activity_02_cKt" />
-        <item itemvalue="Kotlin.Activity_01_cKt" />
       </list>
     </recent_temporary>
   </component>
@@ -237,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675266263354</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="KODEGO MD2P &#10;&#10;Working with Activity 4">
+      <created>1675608675354</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1675608675354</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -255,7 +271,8 @@
     <MESSAGE value="KODEGO MD2P" />
     <MESSAGE value="KODEGO MD2P &#10;&#10;Organize package and file name" />
     <MESSAGE value="KODEGO MD2P &#10;&#10;Done with Activity 3 ABC" />
-    <option name="LAST_COMMIT_MESSAGE" value="KODEGO MD2P &#10;&#10;Done with Activity 3 ABC" />
+    <MESSAGE value="KODEGO MD2P &#10;&#10;Working with Activity 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="KODEGO MD2P &#10;&#10;Working with Activity 4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
