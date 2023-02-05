@@ -1,10 +1,19 @@
 package activity
+
+import java.text.DateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Date
+
 fun main() {
 //    println("Application for Employment")
     var position:String = "Software Engineer"
-    var desiredSalary:String = "30,000 - 50,000"; //It can be optional to use by range.
-    var dateAvialbility:String = "Anytime";
+    var desiredSalary:IntRange = 30000..50000 //It can be optional to use by range.
+    var parsedateAvialbility = LocalDate.parse("2022-10-06")
+    var formatdateAvialbility = DateTimeFormatter.ofPattern("yyyy-MM-d")
+    var dateAvialbility = parsedateAvialbility.format(formatdateAvialbility)
 
+//    Personal Information
     var firstName:String = "Ebrahim";
     var middleName:String = "Escabarte";
     var lastName:String = "Diangca";
