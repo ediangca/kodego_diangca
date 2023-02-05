@@ -3,7 +3,7 @@ package activity.`04`
 import java.time.LocalDate
 
 /**
- * Covered Topic(s) : Classes
+Covered Topic(s) : Classes
 
 Create class for
 Poultry
