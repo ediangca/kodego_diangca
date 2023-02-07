@@ -1,6 +1,8 @@
 package activity.`01`
 
 import mu.KotlinLogging
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -45,8 +47,9 @@ fun main() {
 
     var borrower: String? = null
     var book: String? = null
-    var dateBorrowed: Date? = Date()
-    var daystoborrow: Int? = null
+    var formatdate: DateTimeFormatter? = DateTimeFormatter.ofPattern("yyyy-MM-d")
+    var dateBorrowed: LocalDate = LocalDate.now()
+    var daystoborrow: Long? = null
     var dateReturn: String? = null
     var index: Int = 1
 
@@ -83,15 +86,15 @@ fun main() {
             }
             println("Please Enter a Number of days to borrow:")
             daystoborrow = try {
-                readLine()?.toInt() ?: 1
+                readLine()?.toLong() ?: 1
             } catch (e: Exception) {
                 activity.Logger().log.error { e.message }
                 0
             }
-            val c = Calendar.getInstance()
-            c.time = dateBorrowed
-            c.add(Calendar.DATE, daystoborrow ?: 1)
-            dateReturn = c.time.toString()
+            dateReturn = dateBorrowed.plusDays(daystoborrow!!).format(formatdate)
+
+            //    add 1 year
+            var dateexp: LocalDate = LocalDate.now().plusDays(365)
 
             var confirm = false;
             var confirmInput: String? = "N";

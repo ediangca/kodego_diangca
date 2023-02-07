@@ -66,7 +66,7 @@ interface Shape{
 class Square(override var sides: Int) : Shape,
     Dog("") {
     override fun setShade(value: Double) {
-        TODO("Not yet implemented")
+
     }
 
 }
