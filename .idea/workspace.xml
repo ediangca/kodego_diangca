@@ -288,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675834322230</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="KODEGO MD2P &#10;&#10;Working with FastFoodCompany OOP Exercises">
+      <created>1675834398601</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1675834398601</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -307,7 +314,8 @@
     <MESSAGE value="KODEGO MD2P &#10;&#10;Organize package and file name" />
     <MESSAGE value="KODEGO MD2P &#10;&#10;Done with Activity 3 ABC" />
     <MESSAGE value="KODEGO MD2P &#10;&#10;Working with Activity 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="KODEGO MD2P &#10;&#10;Working with Activity 4" />
+    <MESSAGE value="KODEGO MD2P &#10;&#10;Working with FastFoodCompany OOP Exercises" />
+    <option name="LAST_COMMIT_MESSAGE" value="KODEGO MD2P &#10;&#10;Working with FastFoodCompany OOP Exercises" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -24,6 +24,7 @@ import java.text.DecimalFormat
 import java.time.format.DateTimeFormatter
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
+import kotlin.system.exitProcess
 
 class FastFoodCompany {
 
@@ -61,7 +62,7 @@ class FastFoodCompany {
 //    firstName, lastName, address, mobileNo.
     var customer = Customer()
     var cart = Cart()
-    var order = HashMap<Customer, Cart>()
+    var orders = HashMap<Customer, Cart>()
 
     constructor() {
         initfood()
@@ -319,6 +320,7 @@ class FastFoodCompany {
         saldata.addon.add("egg")
         arrsalads.add(saldata)
     }
+
     /**
     fun showFood(
     arrfreshFruits: ArrayList<FreshFruits>, arrshakes: ArrayList<Shake>,
@@ -375,11 +377,19 @@ class FastFoodCompany {
             )
         }
     }
+
     private fun showmenu() {
         do {
-            println("-------------------------------------- MENU ---------------------------------------------------")
-            println("[1]NEW CUSTOMER\t[2]UPDATE CUSTOMER ORDER\t[3]SHOW CART\t[4]UPDATE STATUS\t[5]DISPLAY ORDERS []DISPLAY FOOD\t[6]EXIT")
-            menu = readLine()!!.toInt() ?: 1
+
+            do {
+                println("-------------------------------------- MENU ---------------------------------------------------")
+                println("[1]NEW CUSTOMER\t[2]UPDATE CUSTOMER ORDER\t[3]SHOW CART\t[4]UPDATE STATUS\t[5]DISPLAY ORDERS []DISPLAY FOOD\t[6]EXIT")
+                menu = readLine()!!.toInt()
+                if (menu == null) {
+                    activity.Logger().log.warn { "Please indicate Menu!" }
+                }
+            } while (menu == null)
+
             if (menu == 1) {
                 addcustomer()
             } else if (menu == 2) {
@@ -392,9 +402,13 @@ class FastFoodCompany {
                 showorders()
             } else if (menu == 6) {
                 showFood()
+            } else if (menu == 6) {
+                exitProcess(0)
             }
+
         } while (menu in 1..5)
     }
+
     private fun addcustomer() {
         do {
             activity.Logger().log.info { "Please Enter Firstname of Customer:" }
@@ -430,7 +444,7 @@ class FastFoodCompany {
         cart = Cart(customer)
         cart.Id++
         cart.uniqueId = "CUS-00" + cart.Id
-        order[customer] = cart
+        orders[customer] = cart
 
         do {
 //    show fresh fruits, shakes, juices, sandwiches, and salads.
@@ -443,129 +457,47 @@ class FastFoodCompany {
             }
 //        Checking the availability of product in (fresh fruits, shakes, juices, sandwiches, and salads).
 //        Check fruits
-            for (fruit in arrfreshFruits) {
-                if (item.equals(fruit.name, true)) {
-                    found = true
-                    activity.Logger().log.info { "Item found and available @ Fresh Fruits!" }
-                    price = fruit.price
-                }
-            }
-//        Check shakes
-//        activity.Logger().log.info { "Item is not belong to fruits.." }
-            for (shake in arrshakes) {
-                if (item.equals(shake.name, true)) {
-                    found = true
-                    activity.Logger().log.info { "Item found and available @ Shakes in ${shake.size}!" }
-                    price = shake.price
-                    noofentry++
-                }
-            }
-            if (noofentry > 1) {
-                do {
-                    println("Enter size of Shake e < SMALL | MEDIUM | LARGE >:")
-                    size = readLine() ?: "SMALL"
-                    for (shake in arrshakes) {
-                        if (item.equals(shake.name, true) and size.equals(shake.size, true)) {
-                            found = true
-//                        activity.Logger().log.info { "Item found and available @ Shakes!" }
-                            price = shake.price
-                            noofentry = 0
-                        }
-                    }
-                } while (size == null)
-            }
-//        Check juices
-//        activity.Logger().log.info { "Item is not belong to Shakes.." }
-            for (juice in arrjuices) {
-                if (item.equals(juice.name, true)) {
-                    found = true
-                    activity.Logger().log.info { "Item found and available @ size ${juice.size}!" }
-                    price = juice.price
-                    noofentry++
-                }
-            }
-            if (noofentry > 1) {
-                do {
-                    println("Enter size of Juice < SMALL | MEDIUM | LARGE >:")
-                    size = readLine() ?: "SMALL"
-                    for (juice in arrjuices) {
-                        if (item.equals(juice.name, true) and size.equals(juice.size, true)) {
-                            found = true
-//                        activity.Logger().log.info { "Item found and available @ Juices!" }
-                            price = juice.price
-                            noofentry = 0
-                        }
-                    }
-                } while (size == null)
-            }
-//        Check sandwiches
-//        activity.Logger().log.info { "Item is not belong to Juices.." }
-            for (sandwich in arrsandwiches) {
-                if (item.equals(sandwich.name, true)) {
-                    found = true
-                    activity.Logger().log.info { "Item found and available @ Sandwiches in ${sandwich.type}!" }
-                    price = sandwich.price
-                    noofentry++
-                }
-            }
-            if (noofentry > 1) {
-                do {
-                    println("Enter type of Sandwich < REGULAR | SPECIAL >:")
-                    type = readLine() ?: "REGULAR"
-                    for (sandwich in arrsandwiches) {
-                        if (item.equals(sandwich.name, true) and type.equals(sandwich.type, true)) {
-                            found = true
-//                        activity.Logger().log.info { "Item found and available @ Sandwiches!" }
-                            price = sandwich.price
-                            noofentry = 0
-                        }
-                    }
-                } while (type == null)
-            }
-//        Check salads
-//        activity.Logger().log.info { "Item is not belong to Sandwiches.." }
-            for (salad in arrsalads) {
-                if (item.equals(salad.name, true)) {
-                    found = true
-                    activity.Logger().log.info { "Item found and available @ Salads in ${salad.type}!" }
-                    price = salad.price
-                    noofentry++
-                }
-            }
-            if (noofentry > 1) {
-                do {
-                    println("Enter type of Sandwich < REGULAR | SPECIAL >:")
-                    type = readLine() ?: "REGULAR"
-                    for (salad in arrsalads) {
-                        if (item.equals(salad.name, true) and type.equals(salad.type, true)) {
-                            found = true
-//                        activity.Logger().log.info { "Item found and available @ Salads!" }
-                            price = salad.price
-                            noofentry = 0
-                        }
-                    }
-                } while (type == null)
-            }
-            if (!found) {
-                activity.Logger().log.warn { "Item not found/available!" }
-            } else {
-                do {
 
+            found = checkiffound(item)
+
+            if (found) {
+//                Check if the item existing to car
+                var itemexistincart = false
+                var existtext = ""
+                for ((customer, cart) in orders) {
+                    if (cart.items.size > 0) {
+                        for ((product, qty) in cart.items) {
+                            if (product.name.equals(this.item) and product.price.equals(this.price)) {
+                                activity.Logger().log.info { "Product is Existing in cart." }
+                                itemexistincart = true
+                                existtext = " existing"
+                            }
+                        }
+                    }
+                }
+                do {
                     println("Item : $item Price: $price \nEnter a quantity to purchase:")
                     qty = try {
-                        readLine()!!.toFloat() ?: 0.0f
+                        readLine()!!.toFloat()
                     } catch (e: Exception) {
                         activity.Logger().log.error { e.message }
                         0.0f
                     }
                 } while (qty <= 0)
 
-                println("Do you really want to add to cart the item? [Y|N]")
+                println("Do you really want to add to cart the$existtext item? [Y|N]")
                 var confirm = readLine() ?: "Y"
                 if (confirm[0].equals('Y', true) || confirm.equals("Yes", true)) {
-                    cart.addItem(Product(item!!, price), qty)
-                    activity.Logger().log.info { "Item Successfully added to cart." }
+                    if (!itemexistincart) {
+                        cart.addItem(Product(item!!, price), qty)
+                        activity.Logger().log.info { "Item Successfully added to cart." }
+                    } else {
+                        cart.updateexistitem(this.item, price, qty)
+                        activity.Logger().log.info { "Item Successfully added to existing." }
+                    }
                 }
+            } else {
+                activity.Logger().log.warn { "Item not found/available!" }
             }
 
             println("Do you want to add another item? [Y|N]")
@@ -583,6 +515,116 @@ class FastFoodCompany {
         cart.updateOrder(OrderStatus.SENT_TO_KITCHEN)
         cart.show(customer)
     }
+
+    private fun checkiffound(item: String?): Boolean {
+        var found = false
+
+        for (fruit in arrfreshFruits) {
+            if (item.equals(fruit.name, true)) {
+                found = true
+                activity.Logger().log.info { "Item found and available @ Fresh Fruits!" }
+                price = fruit.price
+            }
+        }
+//        Check shakes
+//        activity.Logger().log.info { "Item is not belong to fruits.." }
+        for (shake in arrshakes) {
+            if (item.equals(shake.name, true)) {
+                found = true
+                activity.Logger().log.info { "Item found and available @ Shakes in ${shake.size}!" }
+                price = shake.price
+                noofentry++
+            }
+        }
+        if (noofentry > 1) {
+            do {
+                println("Enter size of Shake e < SMALL | MEDIUM | LARGE >:")
+                size = readLine() ?: "SMALL"
+                for (shake in arrshakes) {
+                    if (item.equals(shake.name, true) and size.equals(shake.size, true)) {
+                        found = true
+//                        activity.Logger().log.info { "Item found and available @ Shakes!" }
+                        price = shake.price
+                        noofentry = 0
+                    }
+                }
+            } while (size == null)
+        }
+//        Check juices
+//        activity.Logger().log.info { "Item is not belong to Shakes.." }
+        for (juice in arrjuices) {
+            if (item.equals(juice.name, true)) {
+                found = true
+                activity.Logger().log.info { "Item found and available @ size ${juice.size}!" }
+                price = juice.price
+                noofentry++
+            }
+        }
+        if (noofentry > 1) {
+            do {
+                println("Enter size of Juice < SMALL | MEDIUM | LARGE >:")
+                size = readLine() ?: "SMALL"
+                for (juice in arrjuices) {
+                    if (item.equals(juice.name, true) and size.equals(juice.size, true)) {
+                        found = true
+//                        activity.Logger().log.info { "Item found and available @ Juices!" }
+                        price = juice.price
+                        noofentry = 0
+                    }
+                }
+            } while (size == null)
+        }
+//        Check sandwiches
+//        activity.Logger().log.info { "Item is not belong to Juices.." }
+        for (sandwich in arrsandwiches) {
+            if (item.equals(sandwich.name, true)) {
+                found = true
+                activity.Logger().log.info { "Item found and available @ Sandwiches in ${sandwich.type}!" }
+                price = sandwich.price
+                noofentry++
+            }
+        }
+        if (noofentry > 1) {
+            do {
+                println("Enter type of Sandwich < REGULAR | SPECIAL >:")
+                type = readLine() ?: "REGULAR"
+                for (sandwich in arrsandwiches) {
+                    if (item.equals(sandwich.name, true) and type.equals(sandwich.type, true)) {
+                        found = true
+//                        activity.Logger().log.info { "Item found and available @ Sandwiches!" }
+                        price = sandwich.price
+                        noofentry = 0
+                    }
+                }
+            } while (type == null)
+        }
+//        Check salads
+//        activity.Logger().log.info { "Item is not belong to Sandwiches.." }
+        for (salad in arrsalads) {
+            if (item.equals(salad.name, true)) {
+                found = true
+                activity.Logger().log.info { "Item found and available @ Salads in ${salad.type}!" }
+                price = salad.price
+                noofentry++
+            }
+        }
+        if (noofentry > 1) {
+            do {
+                println("Enter type of Sandwich < REGULAR | SPECIAL >:")
+                type = readLine() ?: "REGULAR"
+                for (salad in arrsalads) {
+                    if (item.equals(salad.name, true) and type.equals(salad.type, true)) {
+                        found = true
+//                        activity.Logger().log.info { "Item found and available @ Salads!" }
+                        price = salad.price
+                        noofentry = 0
+                    }
+                }
+            } while (type == null)
+        }
+        return found
+    }
+
     private fun editcustomerorder() {
         println("-------------------------------------- ENTER FIRST AND LASTNAME TO UPDATE CART ---------------------------------------------------")
         do {
@@ -609,7 +651,7 @@ class FastFoodCompany {
 
         var found = false
 
-        for ((customer, cart) in order) {
+        for ((customer, cart) in orders) {
             if (firstName.equals(customer.firstName, true) and lastName.equals(
                     customer.lastName,
                     true
@@ -628,22 +670,67 @@ class FastFoodCompany {
             activity.Logger().log.warn { "Customer not found!" }
         }
     }
+
     private fun showorders() {
-    }
-    private fun updateorderstatus() {
-    }
-    private fun showcart() {
+        println("----------------------------------------------------- list Of Orders -------------------------------------------------------")
+        for ((customer, cart) in orders){
+            cart.show(customer)
+            println("------------------------------------------------------------------------------------------------------------")
+        }
     }
 
-    //    Class Main method
-    fun main() {
-        FastFoodCompany()
+    private fun updateorderstatus() {
+    }
+
+    private fun showcart() {println("-------------------------------------- ENTER FIRST AND LASTNAME TO UPDATE CART ---------------------------------------------------")
+        do {
+            activity.Logger().log.info { "Please Enter Firstname of Customer:" }
+            firstName = readLine()
+            if (firstName.isNullOrEmpty()) {
+                activity.Logger().log.warn { "Please indicate Firstname." }
+            }
+        } while (firstName.isNullOrEmpty())
+        do {
+            activity.Logger().log.info { "Please Enter Lastname of Customer:" }
+            lastName = readLine()
+            if (lastName.isNullOrEmpty()) {
+                activity.Logger().log.warn { "Please indicate Lastname." }
+            }
+        } while (lastName.isNullOrEmpty())
+        do {
+            activity.Logger().log.info { "Please Enter Mobile No.:" }
+            mobileno = readLine()
+            if (mobileno.isNullOrEmpty()) {
+                activity.Logger().log.warn { "Please indicate Mobile No.!" }
+            }
+        } while (mobileno.isNullOrEmpty())
+
+        var found = false
+
+        for ((customer, cart) in orders) {
+            if (firstName.equals(customer.firstName, true) and lastName.equals(
+                    customer.lastName,
+                    true
+                ) and mobileno.equals(customer.mobileno, true)
+            ) {
+                found = true
+                this.customer = customer
+                this.cart = cart
+            }
+        }
+        if (found) {
+            activity.Logger().log.info { "Customer found!" }
+            activity.Logger().log.info { "Showing Cart" }
+            this.cart.show(this.customer)
+        } else {
+            activity.Logger().log.warn { "Sorry! Customer not found!" }
+        }
     }
 
 }
 
 fun main() {
-
+    FastFoodCompany()
 }
 
 class Cart(var customer: Customer?) {
@@ -659,8 +746,15 @@ class Cart(var customer: Customer?) {
         this.status = status
     }
 
+    fun updateexistitem(item: String?, price: Double, plusqty: Float) {
+        for ((product, qty) in items) {
+            if (product.name.equals(item, true) and product.price.equals(price)) {
+                items[product] = items.getValue(product) + plusqty
+            }
+        }
+    }
+
     fun addItem(product: Product, qty: Float) {
-//        items.put(product, qty)
         items[product] = qty
     }
 
