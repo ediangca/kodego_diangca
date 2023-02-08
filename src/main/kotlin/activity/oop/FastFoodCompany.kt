@@ -66,6 +66,7 @@ class FastFood {
     constructor() {
         initfood()
         showFood()
+        showmenu()
     }
 
     private fun showmenu() {
@@ -581,7 +582,7 @@ class FastFood {
 
     //    Class Main method
     fun main() {
-        FastFood().showmenu()
+        FastFood()
     }
 
     /**
