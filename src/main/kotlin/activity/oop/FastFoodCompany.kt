@@ -642,6 +642,10 @@ class FastFoodCompany {
 
 }
 
+fun main() {
+
+}
+
 class Cart(var customer: Customer?) {
 
     var uniqueId: String? = null
