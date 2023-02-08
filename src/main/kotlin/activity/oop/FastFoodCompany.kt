@@ -25,7 +25,7 @@ import java.time.format.DateTimeFormatter
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-class FastFood {
+class FastFoodCompany {
 
     var formatdate: DateTimeFormatter? = DateTimeFormatter.ofPattern("yyyy-MM-d")
     var arrfreshFruits = ArrayList<FreshFruits>()
@@ -69,6 +69,312 @@ class FastFood {
         showmenu()
     }
 
+    private fun initfood() {
+//    FreshFruits(name: String, price: Double)
+//        var arrfreshFruits = ArrayList<FreshFruits>()
+        ffdata = FreshFruits("Watermelon", 30.0)
+        ffdata.qty = 20.0f
+        ffdata.unit = "kilo"
+        ffdata.weight = .30
+        arrfreshFruits.add(ffdata)
+        ffdata = FreshFruits("Banana", 15.0)
+        ffdata.qty = 30.0f
+        ffdata.unit = "kilo"
+        ffdata.weight = .15
+        arrfreshFruits.add(ffdata)
+        ffdata = FreshFruits("Orange", 10.0)
+        ffdata.qty = 50.0f
+        ffdata.unit = "piece"
+        ffdata.weight = 0.0
+        arrfreshFruits.add(ffdata)
+        ffdata = FreshFruits("Apple", 20.0)
+        ffdata.qty = 100.0f
+        ffdata.unit = "piece"
+        ffdata.weight = 0.0
+        arrfreshFruits.add(ffdata)
+        ffdata = FreshFruits("PineApple", 10.0)
+        ffdata.qty = 10.0f
+        ffdata.unit = "piece"
+        ffdata.weight = 0.0
+        arrfreshFruits.add(ffdata)
+        ffdata = FreshFruits("Durian", 30.0)
+        ffdata.qty = 5.0f
+        ffdata.unit = "kilo"
+        ffdata.weight = 1.2
+        arrfreshFruits.add(ffdata)
+//    Shake(name: String, price: Double)
+//        var arrshakes = ArrayList<Shake>()
+        sdata = Shake("Mango Graham", 30.0)
+        sdata.size = "Small"
+        sdata.ingredients.add("Graham")
+        sdata.ingredients.add("Mango")
+        sdata.ingredients.add("Sugar")
+        sdata.ingredients.add("Condensada")
+        sdata.ingredients.add("Evaporada")
+        sdata.addon.add("Sprinkles")
+        arrshakes.add(sdata)
+        sdata = Shake("Mango Graham", 40.0)
+        sdata.size = "Medium"
+        sdata.ingredients.add("Graham")
+        sdata.ingredients.add("Mango")
+        sdata.ingredients.add("Sugar")
+        sdata.ingredients.add("Condensada")
+        sdata.ingredients.add("Evaporada")
+        sdata.addon.add("Sprinkles")
+        arrshakes.add(sdata)
+        sdata = Shake("Mango Graham", 50.0)
+        sdata.size = "Large"
+        sdata.ingredients.add("Graham")
+        sdata.ingredients.add("Mango")
+        sdata.ingredients.add("Sugar")
+        sdata.ingredients.add("Condensada")
+        sdata.ingredients.add("Evaporada")
+        sdata.addon.add("Sprinkles")
+        arrshakes.add(sdata)
+        sdata = Shake("Avocado", 30.0)
+        sdata.size = "Small"
+        sdata.ingredients.add("Avocado")
+        sdata.ingredients.add("Sugar")
+        sdata.ingredients.add("Condensada")
+        sdata.ingredients.add("Evaporada")
+        sdata.addon.add("Sprinkles")
+        arrshakes.add(sdata)
+        sdata = Shake("Avocado", 40.0)
+        sdata.size = "Medium"
+        sdata.ingredients.add("Avocado")
+        sdata.ingredients.add("Sugar")
+        sdata.ingredients.add("Condensada")
+        sdata.ingredients.add("Evaporada")
+        sdata.addon.add("Sprinkles")
+        arrshakes.add(sdata)
+        sdata = Shake("Avocado", 50.0)
+        sdata.size = "Large"
+        sdata.ingredients.add("Avocado")
+        sdata.ingredients.add("Sugar")
+        sdata.ingredients.add("Condensada")
+        sdata.ingredients.add("Evaporada")
+        sdata.addon.add("Sprinkles")
+        arrshakes.add(sdata)
+//    Juices(name: String, price: Double)
+//        var arrjuices = ArrayList<Juices>()
+        jdata = Juices("Apple Juice", 10.0)
+        jdata.size = "Small"
+        jdata.ingredients.add("Water")
+        jdata.ingredients.add("Apple")
+        jdata.ingredients.add("Sugar")
+        arrjuices.add(jdata)
+        jdata = Juices("Apple Juice", 15.0)
+        jdata.size = "Medium"
+        jdata.ingredients.add("Water")
+        jdata.ingredients.add("Apple")
+        jdata.ingredients.add("Sugar")
+        arrjuices.add(jdata)
+        jdata = Juices("Apple Juice", 25.0)
+        jdata.size = "Large"
+        jdata.ingredients.add("Water")
+        jdata.ingredients.add("Apple")
+        jdata.ingredients.add("Sugar")
+        arrjuices.add(jdata)
+        jdata = Juices("Orange Juice", 10.0)
+        jdata.size = "Small"
+        jdata.ingredients.add("Water")
+        jdata.ingredients.add("Apple")
+        jdata.ingredients.add("Sugar")
+        arrjuices.add(jdata)
+        jdata = Juices("Orange Juice", 15.0)
+        jdata.size = "Medium"
+        jdata.ingredients.add("Water")
+        jdata.ingredients.add("Apple")
+        jdata.ingredients.add("Sugar")
+        arrjuices.add(jdata)
+        jdata = Juices("Orange Juice", 25.0)
+        jdata.size = "Large"
+        jdata.ingredients.add("Water")
+        jdata.ingredients.add("Apple")
+        jdata.ingredients.add("Sugar")
+        arrjuices.add(jdata)
+        jdata = Juices("Buko Juice", 10.0)
+        jdata.size = "Small"
+        jdata.ingredients.add("Water")
+        jdata.ingredients.add("Apple")
+        jdata.ingredients.add("Sugar")
+        arrjuices.add(jdata)
+        jdata = Juices("Buko Juice", 15.0)
+        jdata.size = "Medium"
+        jdata.ingredients.add("Water")
+        jdata.ingredients.add("Apple")
+        jdata.ingredients.add("Sugar")
+        arrjuices.add(jdata)
+        jdata = Juices("Buko Juice", 25.0)
+        jdata.size = "Large"
+        jdata.ingredients.add("Water")
+        jdata.ingredients.add("Apple")
+        jdata.ingredients.add("Sugar")
+        arrjuices.add(jdata)
+//    Sandwiches(name: String, price: Double)
+//        var arrsandwiches = ArrayList<Sandwiches>()
+        swdata = Sandwiches("Foot Long", 25.0)
+        swdata.type = "Regular"
+        swdata.ingredients.add("Bread")
+        swdata.ingredients.add("Chicken Hot Dog")
+        swdata.ingredients.add("Sauce")
+        swdata.ingredients.add("Mayonnaise")
+        swdata.addon.add("Cheese")
+        swdata.addon.add("Egg")
+        swdata.addon.add("Hot Sauce")
+        arrsandwiches.add(swdata)
+        swdata = Sandwiches("Foot Long", 50.0)
+        swdata.type = "Special"
+        swdata.ingredients.add("Bread")
+        swdata.ingredients.add("2Chicken Hot Dog")
+        swdata.ingredients.add("Sauce")
+        swdata.ingredients.add("Mayonnaise")
+        swdata.ingredients.add("Pepper")
+        swdata.ingredients.add("cabbage")
+        swdata.ingredients.add("Tomato")
+        swdata.ingredients.add("Mushroom")
+        swdata.ingredients.add("Cheese")
+        swdata.addon.add("Egg")
+        swdata.addon.add("Hot Sauce")
+        arrsandwiches.add(swdata)
+        swdata = Sandwiches("Chicken Time", 30.0)
+        swdata.type = "Regular"
+        swdata.ingredients.add("Bread")
+        swdata.ingredients.add("Chicken Fatty")
+        swdata.ingredients.add("Sauce")
+        swdata.ingredients.add("Mayonnaise")
+        swdata.addon.add("Cheese")
+        swdata.addon.add("Egg")
+        swdata.addon.add("Hot Sauce")
+        arrsandwiches.add(swdata)
+        swdata = Sandwiches("Chicken Time", 65.0)
+        swdata.type = "Special"
+        swdata.ingredients.add("Bread")
+        swdata.ingredients.add("2 Chicken Fatty")
+        swdata.ingredients.add("Sauce")
+        swdata.ingredients.add("Mayonnaise")
+        swdata.ingredients.add("Pepper")
+        swdata.ingredients.add("cabbage")
+        swdata.ingredients.add("Tomato")
+        swdata.ingredients.add("Mushroom")
+        swdata.ingredients.add("Cheese")
+        swdata.addon.add("Egg")
+        swdata.addon.add("Hot Sauce")
+        arrsandwiches.add(swdata)
+        swdata = Sandwiches("Minute Burger", 35.0)
+        swdata.type = "Regular"
+        swdata.ingredients.add("Bread")
+        swdata.ingredients.add("Beef Fatty")
+        swdata.ingredients.add("Sauce")
+        swdata.ingredients.add("Mayonnaise")
+        swdata.ingredients.add("Pepper")
+        swdata.addon.add("Cheese")
+        swdata.addon.add("Egg")
+        swdata.addon.add("Hot Sauce")
+        arrsandwiches.add(swdata)
+        swdata = Sandwiches("Minute Burger", 75.0)
+        swdata.type = "Special"
+        swdata.ingredients.add("Bread")
+        swdata.ingredients.add("2 Beef Fatty")
+        swdata.ingredients.add("Sauce")
+        swdata.ingredients.add("Mayonnaise")
+        swdata.ingredients.add("Pepper")
+        swdata.ingredients.add("cabbage")
+        swdata.ingredients.add("Tomato")
+        swdata.ingredients.add("Mushroom")
+        swdata.ingredients.add("Cheese")
+        swdata.addon.add("Egg")
+        swdata.addon.add("Hot Sauce")
+        arrsandwiches.add(swdata)
+//    Salads(name: String, price: Double)
+//        var arrsalads = ArrayList<Salads>()
+        saldata = Salads("Curry Chicken Salad with Grapes", 120.0)
+        saldata.type = "Regular"
+        saldata.ingredients.add("1/2 cup butter")
+        saldata.ingredients.add("2 cups mayonnaise")
+        saldata.ingredients.add("1/4 cup minced garlic")
+        saldata.ingredients.add("2 tablespoons chopped fresh parsley")
+        saldata.ingredients.add("1 teaspoon curry powder")
+        saldata.ingredients.add("1 teaspoon curry powder")
+        saldata.ingredients.add("2 cups halved red grapes")
+        saldata.ingredients.add("1/2 cup toasted slivered almonds")
+        saldata.dressing = "Caesar Dressing"
+        saldata.addon.add("mayonnaise")
+        saldata.addon.add("butter")
+        saldata.addon.add("egg")
+        arrsalads.add(saldata)
+        saldata = Salads("Curry Chicken Salad with Grapes", 175.0)
+        saldata.type = "Special"
+        saldata.ingredients.add("1/2 cup butter")
+        saldata.ingredients.add("2 cups mayonnaise")
+        saldata.ingredients.add("1/4 cup minced garlic")
+        saldata.ingredients.add("2 tablespoons chopped fresh parsley")
+        saldata.ingredients.add("1 teaspoon curry powder")
+        saldata.ingredients.add("1 teaspoon curry powder")
+        saldata.ingredients.add("2 cups halved red grapes")
+        saldata.ingredients.add("1/2 cup toasted slivered almonds")
+        saldata.dressing = "Caesar Dressing"
+        saldata.addon.add("mayonnaise")
+        saldata.addon.add("butter")
+        saldata.addon.add("egg")
+        arrsalads.add(saldata)
+    }
+    /**
+    fun showFood(
+    arrfreshFruits: ArrayList<FreshFruits>, arrshakes: ArrayList<Shake>,
+    arrjuices: ArrayList<Juices>, arrsandwiches: ArrayList<Sandwiches>, arrsalads: ArrayList<Salads>
+    )
+     */
+    fun showFood() {
+//    show fresh fruits, shakes, juices, sandwiches, and salads.
+        println("-------------------------------------- FRUITS ---------------------------------------------------")
+        println("Fruits".padEnd(16) + "Price".padEnd(12) + "Unit".padEnd(16) + "Weight".padEnd(16) + "Qty")
+        for (fruits in arrfreshFruits) {
+            println(
+                "${fruits.name.padEnd(15)} " +
+                        "${fruits.price.toString().padEnd(10)}  " +
+                        "${fruits.unit.padEnd(15)} " +
+                        "${fruits.weight.toString().padEnd(15)} " +
+                        "${fruits.qty}"
+            )
+        }
+        println("-------------------------------------- SHAKE ---------------------------------------------------")
+        println("Shake".padEnd(16) + "Size".padEnd(12) + "Price".padEnd(16))
+        for (shake in arrshakes) {
+            println(
+                "${shake.name.padEnd(15)} " +
+                        "${shake.size.padEnd(11)} " +
+                        "${shake.price}  "
+            )
+        }
+        println("-------------------------------------- JUICE ---------------------------------------------------")
+        println("Juice".padEnd(16) + "Size".padEnd(12) + "Price".padEnd(16))
+        for (juice in arrjuices) {
+            println(
+                "${juice.name.padEnd(15)} " +
+                        "${juice.size.padEnd(11)} " +
+                        "${juice.price}  "
+            )
+        }
+        println("-------------------------------------- SANDWICHES ---------------------------------------------------")
+        println("Sandwich".padEnd(16) + "Type".padEnd(12) + "Price".padEnd(16))
+        for (sandwich in arrsandwiches) {
+            println(
+                "${sandwich.name.padEnd(15)} " +
+                        "${sandwich.type.padEnd(11)} " +
+                        "${sandwich.price}  "
+            )
+        }
+        println("-------------------------------------- SALAD ---------------------------------------------------")
+        println("Salad".padEnd(35) + "Price".padEnd(12) + "Size".padEnd(16))
+        for (salad in arrsalads) {
+            println(
+                "${salad.name.padEnd(34)} " +
+                        "${salad.type.padEnd(11)} " +
+                        "${salad.price}  "
+            )
+        }
+    }
     private fun showmenu() {
         do {
             println("-------------------------------------- MENU ---------------------------------------------------")
@@ -329,318 +635,11 @@ class FastFood {
     private fun showcart() {
     }
 
-    private fun initfood() {
-//    FreshFruits(name: String, price: Double)
-//        var arrfreshFruits = ArrayList<FreshFruits>()
-        ffdata = FreshFruits("Watermelon", 30.0)
-        ffdata.qty = 20.0f
-        ffdata.unit = "kilo"
-        ffdata.weight = .30
-        arrfreshFruits.add(ffdata)
-        ffdata = FreshFruits("Banana", 15.0)
-        ffdata.qty = 30.0f
-        ffdata.unit = "kilo"
-        ffdata.weight = .15
-        arrfreshFruits.add(ffdata)
-        ffdata = FreshFruits("Orange", 10.0)
-        ffdata.qty = 50.0f
-        ffdata.unit = "piece"
-        ffdata.weight = 0.0
-        arrfreshFruits.add(ffdata)
-        ffdata = FreshFruits("Apple", 20.0)
-        ffdata.qty = 100.0f
-        ffdata.unit = "piece"
-        ffdata.weight = 0.0
-        arrfreshFruits.add(ffdata)
-        ffdata = FreshFruits("PineApple", 10.0)
-        ffdata.qty = 10.0f
-        ffdata.unit = "piece"
-        ffdata.weight = 0.0
-        arrfreshFruits.add(ffdata)
-        ffdata = FreshFruits("Durian", 30.0)
-        ffdata.qty = 5.0f
-        ffdata.unit = "kilo"
-        ffdata.weight = 1.2
-        arrfreshFruits.add(ffdata)
-//    Shake(name: String, price: Double)
-//        var arrshakes = ArrayList<Shake>()
-        sdata = Shake("Mango Graham", 30.0)
-        sdata.size = "Small"
-        sdata.ingredients.add("Graham")
-        sdata.ingredients.add("Mango")
-        sdata.ingredients.add("Sugar")
-        sdata.ingredients.add("Condensada")
-        sdata.ingredients.add("Evaporada")
-        sdata.addon.add("Sprinkles")
-        arrshakes.add(sdata)
-        sdata = Shake("Mango Graham", 40.0)
-        sdata.size = "Medium"
-        sdata.ingredients.add("Graham")
-        sdata.ingredients.add("Mango")
-        sdata.ingredients.add("Sugar")
-        sdata.ingredients.add("Condensada")
-        sdata.ingredients.add("Evaporada")
-        sdata.addon.add("Sprinkles")
-        arrshakes.add(sdata)
-        sdata = Shake("Mango Graham", 50.0)
-        sdata.size = "Large"
-        sdata.ingredients.add("Graham")
-        sdata.ingredients.add("Mango")
-        sdata.ingredients.add("Sugar")
-        sdata.ingredients.add("Condensada")
-        sdata.ingredients.add("Evaporada")
-        sdata.addon.add("Sprinkles")
-        arrshakes.add(sdata)
-        sdata = Shake("Avocado", 30.0)
-        sdata.size = "Small"
-        sdata.ingredients.add("Avocado")
-        sdata.ingredients.add("Sugar")
-        sdata.ingredients.add("Condensada")
-        sdata.ingredients.add("Evaporada")
-        sdata.addon.add("Sprinkles")
-        arrshakes.add(sdata)
-        sdata = Shake("Avocado", 40.0)
-        sdata.size = "Medium"
-        sdata.ingredients.add("Avocado")
-        sdata.ingredients.add("Sugar")
-        sdata.ingredients.add("Condensada")
-        sdata.ingredients.add("Evaporada")
-        sdata.addon.add("Sprinkles")
-        arrshakes.add(sdata)
-        sdata = Shake("Avocado", 50.0)
-        sdata.size = "Large"
-        sdata.ingredients.add("Avocado")
-        sdata.ingredients.add("Sugar")
-        sdata.ingredients.add("Condensada")
-        sdata.ingredients.add("Evaporada")
-        sdata.addon.add("Sprinkles")
-        arrshakes.add(sdata)
-//    Juices(name: String, price: Double)
-//        var arrjuices = ArrayList<Juices>()
-        jdata = Juices("Apple Juice", 10.0)
-        jdata.size = "Small"
-        jdata.ingredients.add("Water")
-        jdata.ingredients.add("Apple")
-        jdata.ingredients.add("Sugar")
-        arrjuices.add(jdata)
-        jdata = Juices("Apple Juice", 15.0)
-        jdata.size = "Medium"
-        jdata.ingredients.add("Water")
-        jdata.ingredients.add("Apple")
-        jdata.ingredients.add("Sugar")
-        arrjuices.add(jdata)
-        jdata = Juices("Apple Juice", 25.0)
-        jdata.size = "Large"
-        jdata.ingredients.add("Water")
-        jdata.ingredients.add("Apple")
-        jdata.ingredients.add("Sugar")
-        arrjuices.add(jdata)
-        jdata = Juices("Orange Juice", 10.0)
-        jdata.size = "Small"
-        jdata.ingredients.add("Water")
-        jdata.ingredients.add("Apple")
-        jdata.ingredients.add("Sugar")
-        arrjuices.add(jdata)
-        jdata = Juices("Orange Juice", 15.0)
-        jdata.size = "Medium"
-        jdata.ingredients.add("Water")
-        jdata.ingredients.add("Apple")
-        jdata.ingredients.add("Sugar")
-        arrjuices.add(jdata)
-        jdata = Juices("Orange Juice", 25.0)
-        jdata.size = "Large"
-        jdata.ingredients.add("Water")
-        jdata.ingredients.add("Apple")
-        jdata.ingredients.add("Sugar")
-        arrjuices.add(jdata)
-        jdata = Juices("Buko Juice", 10.0)
-        jdata.size = "Small"
-        jdata.ingredients.add("Water")
-        jdata.ingredients.add("Apple")
-        jdata.ingredients.add("Sugar")
-        arrjuices.add(jdata)
-        jdata = Juices("Buko Juice", 15.0)
-        jdata.size = "Medium"
-        jdata.ingredients.add("Water")
-        jdata.ingredients.add("Apple")
-        jdata.ingredients.add("Sugar")
-        arrjuices.add(jdata)
-        jdata = Juices("Buko Juice", 25.0)
-        jdata.size = "Large"
-        jdata.ingredients.add("Water")
-        jdata.ingredients.add("Apple")
-        jdata.ingredients.add("Sugar")
-        arrjuices.add(jdata)
-//    Sandwiches(name: String, price: Double)
-//        var arrsandwiches = ArrayList<Sandwiches>()
-        swdata = Sandwiches("Foot Long", 25.0)
-        swdata.type = "Regular"
-        swdata.ingredients.add("Bread")
-        swdata.ingredients.add("Chicken Hot Dog")
-        swdata.ingredients.add("Sauce")
-        swdata.ingredients.add("Mayonnaise")
-        swdata.addon.add("Cheese")
-        swdata.addon.add("Egg")
-        swdata.addon.add("Hot Sauce")
-        arrsandwiches.add(swdata)
-        swdata = Sandwiches("Foot Long", 50.0)
-        swdata.type = "Special"
-        swdata.ingredients.add("Bread")
-        swdata.ingredients.add("2Chicken Hot Dog")
-        swdata.ingredients.add("Sauce")
-        swdata.ingredients.add("Mayonnaise")
-        swdata.ingredients.add("Pepper")
-        swdata.ingredients.add("cabbage")
-        swdata.ingredients.add("Tomato")
-        swdata.ingredients.add("Mushroom")
-        swdata.ingredients.add("Cheese")
-        swdata.addon.add("Egg")
-        swdata.addon.add("Hot Sauce")
-        arrsandwiches.add(swdata)
-        swdata = Sandwiches("Chicken Time", 30.0)
-        swdata.type = "Regular"
-        swdata.ingredients.add("Bread")
-        swdata.ingredients.add("Chicken Fatty")
-        swdata.ingredients.add("Sauce")
-        swdata.ingredients.add("Mayonnaise")
-        swdata.addon.add("Cheese")
-        swdata.addon.add("Egg")
-        swdata.addon.add("Hot Sauce")
-        arrsandwiches.add(swdata)
-        swdata = Sandwiches("Chicken Time", 65.0)
-        swdata.type = "Special"
-        swdata.ingredients.add("Bread")
-        swdata.ingredients.add("2 Chicken Fatty")
-        swdata.ingredients.add("Sauce")
-        swdata.ingredients.add("Mayonnaise")
-        swdata.ingredients.add("Pepper")
-        swdata.ingredients.add("cabbage")
-        swdata.ingredients.add("Tomato")
-        swdata.ingredients.add("Mushroom")
-        swdata.ingredients.add("Cheese")
-        swdata.addon.add("Egg")
-        swdata.addon.add("Hot Sauce")
-        arrsandwiches.add(swdata)
-        swdata = Sandwiches("Minute Burger", 35.0)
-        swdata.type = "Regular"
-        swdata.ingredients.add("Bread")
-        swdata.ingredients.add("Beef Fatty")
-        swdata.ingredients.add("Sauce")
-        swdata.ingredients.add("Mayonnaise")
-        swdata.ingredients.add("Pepper")
-        swdata.addon.add("Cheese")
-        swdata.addon.add("Egg")
-        swdata.addon.add("Hot Sauce")
-        arrsandwiches.add(swdata)
-        swdata = Sandwiches("Minute Burger", 75.0)
-        swdata.type = "Special"
-        swdata.ingredients.add("Bread")
-        swdata.ingredients.add("2 Beef Fatty")
-        swdata.ingredients.add("Sauce")
-        swdata.ingredients.add("Mayonnaise")
-        swdata.ingredients.add("Pepper")
-        swdata.ingredients.add("cabbage")
-        swdata.ingredients.add("Tomato")
-        swdata.ingredients.add("Mushroom")
-        swdata.ingredients.add("Cheese")
-        swdata.addon.add("Egg")
-        swdata.addon.add("Hot Sauce")
-        arrsandwiches.add(swdata)
-//    Salads(name: String, price: Double)
-//        var arrsalads = ArrayList<Salads>()
-        saldata = Salads("Curry Chicken Salad with Grapes", 120.0)
-        saldata.type = "Regular"
-        saldata.ingredients.add("1/2 cup butter")
-        saldata.ingredients.add("2 cups mayonnaise")
-        saldata.ingredients.add("1/4 cup minced garlic")
-        saldata.ingredients.add("2 tablespoons chopped fresh parsley")
-        saldata.ingredients.add("1 teaspoon curry powder")
-        saldata.ingredients.add("1 teaspoon curry powder")
-        saldata.ingredients.add("2 cups halved red grapes")
-        saldata.ingredients.add("1/2 cup toasted slivered almonds")
-        saldata.dressing = "Caesar Dressing"
-        saldata.addon.add("mayonnaise")
-        saldata.addon.add("butter")
-        saldata.addon.add("egg")
-        arrsalads.add(saldata)
-        saldata = Salads("Curry Chicken Salad with Grapes", 175.0)
-        saldata.type = "Special"
-        saldata.ingredients.add("1/2 cup butter")
-        saldata.ingredients.add("2 cups mayonnaise")
-        saldata.ingredients.add("1/4 cup minced garlic")
-        saldata.ingredients.add("2 tablespoons chopped fresh parsley")
-        saldata.ingredients.add("1 teaspoon curry powder")
-        saldata.ingredients.add("1 teaspoon curry powder")
-        saldata.ingredients.add("2 cups halved red grapes")
-        saldata.ingredients.add("1/2 cup toasted slivered almonds")
-        saldata.dressing = "Caesar Dressing"
-        saldata.addon.add("mayonnaise")
-        saldata.addon.add("butter")
-        saldata.addon.add("egg")
-        arrsalads.add(saldata)
-    }
-
     //    Class Main method
     fun main() {
-        FastFood()
+        FastFoodCompany()
     }
 
-    /**
-    fun showFood(
-    arrfreshFruits: ArrayList<FreshFruits>, arrshakes: ArrayList<Shake>,
-    arrjuices: ArrayList<Juices>, arrsandwiches: ArrayList<Sandwiches>, arrsalads: ArrayList<Salads>
-    )
-     */
-    fun showFood() {
-//    show fresh fruits, shakes, juices, sandwiches, and salads.
-        println("-------------------------------------- FRUITS ---------------------------------------------------")
-        println("Fruits".padEnd(16) + "Price".padEnd(12) + "Unit".padEnd(16) + "Weight".padEnd(16) + "Qty")
-        for (fruits in arrfreshFruits) {
-            println(
-                "${fruits.name.padEnd(15)} " +
-                        "${fruits.price.toString().padEnd(10)}  " +
-                        "${fruits.unit.padEnd(15)} " +
-                        "${fruits.weight.toString().padEnd(15)} " +
-                        "${fruits.qty}"
-            )
-        }
-        println("-------------------------------------- SHAKE ---------------------------------------------------")
-        println("Shake".padEnd(16) + "Size".padEnd(12) + "Price".padEnd(16))
-        for (shake in arrshakes) {
-            println(
-                "${shake.name.padEnd(15)} " +
-                        "${shake.size.padEnd(11)} " +
-                        "${shake.price}  "
-            )
-        }
-        println("-------------------------------------- JUICE ---------------------------------------------------")
-        println("Juice".padEnd(16) + "Size".padEnd(12) + "Price".padEnd(16))
-        for (juice in arrjuices) {
-            println(
-                "${juice.name.padEnd(15)} " +
-                        "${juice.size.padEnd(11)} " +
-                        "${juice.price}  "
-            )
-        }
-        println("-------------------------------------- SANDWICHES ---------------------------------------------------")
-        println("Sandwich".padEnd(16) + "Type".padEnd(12) + "Price".padEnd(16))
-        for (sandwich in arrsandwiches) {
-            println(
-                "${sandwich.name.padEnd(15)} " +
-                        "${sandwich.type.padEnd(11)} " +
-                        "${sandwich.price}  "
-            )
-        }
-        println("-------------------------------------- SALAD ---------------------------------------------------")
-        println("Salad".padEnd(35) + "Price".padEnd(12) + "Size".padEnd(16))
-        for (salad in arrsalads) {
-            println(
-                "${salad.name.padEnd(34)} " +
-                        "${salad.type.padEnd(11)} " +
-                        "${salad.price}  "
-            )
-        }
-    }
 }
 
 class Cart(var customer: Customer?) {
