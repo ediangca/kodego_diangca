@@ -88,63 +88,6 @@ class FastFood {
             }
         } while (menu in 1..5)
     }
-
-    private fun editcustomerorder() {
-        println("-------------------------------------- ENTER FIRST AND LASTNAME TO UPDATE CART ---------------------------------------------------")
-        do {
-            activity.Logger().log.info { "Please Enter Firstname of Customer:" }
-            firstName = readLine()
-            if (firstName.isNullOrEmpty()) {
-                activity.Logger().log.warn { "Please indicate Firstname." }
-            }
-        } while (firstName.isNullOrEmpty())
-        do {
-            activity.Logger().log.info { "Please Enter Lastname of Customer:" }
-            lastName = readLine()
-            if (lastName.isNullOrEmpty()) {
-                activity.Logger().log.warn { "Please indicate Lastname." }
-            }
-        } while (lastName.isNullOrEmpty())
-        do {
-            activity.Logger().log.info { "Please Enter Mobile No.:" }
-            mobileno = readLine()
-            if (mobileno.isNullOrEmpty()) {
-                activity.Logger().log.warn { "Please indicate Mobile No.!" }
-            }
-        } while (mobileno.isNullOrEmpty())
-
-        var found = false
-
-        for ((customer, cart) in order) {
-            if (firstName.equals(customer.firstName, true) and lastName.equals(
-                    customer.lastName,
-                    true
-                ) and mobileno.equals(customer.mobileno, true)
-            ) {
-                found = true
-                this.customer = customer
-                this.cart = cart
-            }
-        }
-        if (found) {
-            activity.Logger().log.info { "Customer found!" }
-            activity.Logger().log.info { "Showing Cart" }
-            this.cart.show(this.customer)
-        } else {
-            activity.Logger().log.warn { "Customer not found!" }
-        }
-    }
-
-    private fun showorders() {
-    }
-
-    private fun updateorderstatus() {
-    }
-
-    private fun showcart() {
-    }
-
-
     private fun addcustomer() {
         do {
             activity.Logger().log.info { "Please Enter Firstname of Customer:" }
@@ -332,6 +275,57 @@ class FastFood {
 
         cart.updateOrder(OrderStatus.SENT_TO_KITCHEN)
         cart.show(customer)
+    }
+    private fun editcustomerorder() {
+        println("-------------------------------------- ENTER FIRST AND LASTNAME TO UPDATE CART ---------------------------------------------------")
+        do {
+            activity.Logger().log.info { "Please Enter Firstname of Customer:" }
+            firstName = readLine()
+            if (firstName.isNullOrEmpty()) {
+                activity.Logger().log.warn { "Please indicate Firstname." }
+            }
+        } while (firstName.isNullOrEmpty())
+        do {
+            activity.Logger().log.info { "Please Enter Lastname of Customer:" }
+            lastName = readLine()
+            if (lastName.isNullOrEmpty()) {
+                activity.Logger().log.warn { "Please indicate Lastname." }
+            }
+        } while (lastName.isNullOrEmpty())
+        do {
+            activity.Logger().log.info { "Please Enter Mobile No.:" }
+            mobileno = readLine()
+            if (mobileno.isNullOrEmpty()) {
+                activity.Logger().log.warn { "Please indicate Mobile No.!" }
+            }
+        } while (mobileno.isNullOrEmpty())
+
+        var found = false
+
+        for ((customer, cart) in order) {
+            if (firstName.equals(customer.firstName, true) and lastName.equals(
+                    customer.lastName,
+                    true
+                ) and mobileno.equals(customer.mobileno, true)
+            ) {
+                found = true
+                this.customer = customer
+                this.cart = cart
+            }
+        }
+        if (found) {
+            activity.Logger().log.info { "Customer found!" }
+            activity.Logger().log.info { "Showing Cart" }
+            this.cart.show(this.customer)
+        } else {
+            activity.Logger().log.warn { "Customer not found!" }
+        }
+    }
+    private fun showorders() {
+    }
+    private fun updateorderstatus() {
+    }
+    private fun showcart() {
     }
 
     private fun initfood() {
