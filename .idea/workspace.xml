@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fa675f3b-b95f-4bb1-8b6e-8083993a3846" name="Changes" comment="KODEGO MD2P &#10;&#10;Working with Activity 4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Sample/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Sample/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_I.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_I.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/oop/FastFoodCompany.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/oop/FastFoodCompany.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +74,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Activity_01_dKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+    <configuration name="Activity_01_dKt" type="JetRunConfigurationType" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="activity.01.Activity_01_dKt" />
       <module name="MD2P.main" />
       <method v="2">
@@ -115,7 +113,6 @@
       <list>
         <item itemvalue="Kotlin.Activity_04_aKt" />
         <item itemvalue="Kotlin.Activity_03_aKt" />
-        <item itemvalue="Kotlin.Activity_01_dKt" />
         <item itemvalue="Kotlin.Functions_05Kt" />
         <item itemvalue="Kotlin.ApplicationKt" />
       </list>

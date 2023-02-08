@@ -66,7 +66,6 @@ class FastFood {
     constructor() {
         initfood()
         showFood()
-        showmenu()
     }
 
     private fun showmenu() {
@@ -76,63 +75,103 @@ class FastFood {
             menu = readLine()!!.toInt() ?: 1
             if (menu == 1) {
                 addcustomer()
-            }else if (menu == 2) {
-                updatecustomer()
-            }else if (menu == 3) {
+            } else if (menu == 2) {
+                editcustomerorder()
+            } else if (menu == 3) {
                 showcart()
-            }else if (menu == 4) {
+            } else if (menu == 4) {
                 updateorderstatus()
-            }else if (menu == 5) {
+            } else if (menu == 5) {
                 showorders()
-            }else if (menu == 6) {
+            } else if (menu == 6) {
                 showFood()
             }
         } while (menu in 1..5)
     }
 
-    private fun showorders() {
-        TODO("Not yet implemented")
-    }
-
-    private fun updateorderstatus() {
-        TODO("Not yet implemented")
-    }
-
-    private fun showcart() {
-        TODO("Not yet implemented")
-    }
-
-    private fun updatecustomer() {
-        TODO("Not yet implemented")
-    }
-
-    private fun addcustomer() {
+    private fun editcustomerorder() {
+        println("-------------------------------------- ENTER FIRST AND LASTNAME TO UPDATE CART ---------------------------------------------------")
         do {
             activity.Logger().log.info { "Please Enter Firstname of Customer:" }
             firstName = readLine()
             if (firstName.isNullOrEmpty()) {
-                activity.Logger().log.warn { "Please indicate Firstname:" }
+                activity.Logger().log.warn { "Please indicate Firstname." }
             }
         } while (firstName.isNullOrEmpty())
         do {
             activity.Logger().log.info { "Please Enter Lastname of Customer:" }
             lastName = readLine()
             if (lastName.isNullOrEmpty()) {
-                activity.Logger().log.warn { "Please indicate Lastname:" }
+                activity.Logger().log.warn { "Please indicate Lastname." }
+            }
+        } while (lastName.isNullOrEmpty())
+        do {
+            activity.Logger().log.info { "Please Enter Mobile No.:" }
+            mobileno = readLine()
+            if (mobileno.isNullOrEmpty()) {
+                activity.Logger().log.warn { "Please indicate Mobile No.!" }
+            }
+        } while (mobileno.isNullOrEmpty())
+
+        var found = false
+
+        for ((customer, cart) in order) {
+            if (firstName.equals(customer.firstName, true) and lastName.equals(
+                    customer.lastName,
+                    true
+                ) and mobileno.equals(customer.mobileno, true)
+            ) {
+                found = true
+                this.customer = customer
+                this.cart = cart
+            }
+        }
+        if (found) {
+            activity.Logger().log.info { "Customer found!" }
+            activity.Logger().log.info { "Showing Cart" }
+            this.cart.show(this.customer)
+        } else {
+            activity.Logger().log.warn { "Customer not found!" }
+        }
+    }
+
+    private fun showorders() {
+    }
+
+    private fun updateorderstatus() {
+    }
+
+    private fun showcart() {
+    }
+
+
+    private fun addcustomer() {
+        do {
+            activity.Logger().log.info { "Please Enter Firstname of Customer:" }
+            firstName = readLine()
+            if (firstName.isNullOrEmpty()) {
+                activity.Logger().log.warn { "Please indicate Firstname!" }
+            }
+        } while (firstName.isNullOrEmpty())
+        do {
+            activity.Logger().log.info { "Please Enter Lastname of Customer:" }
+            lastName = readLine()
+            if (lastName.isNullOrEmpty()) {
+                activity.Logger().log.warn { "Please indicate Lastname!" }
             }
         } while (lastName.isNullOrEmpty())
         do {
             activity.Logger().log.info { "Please Enter Address of Customer:" }
             address = readLine()
             if (address.isNullOrEmpty()) {
-                activity.Logger().log.warn { "Please indicate Address:" }
+                activity.Logger().log.warn { "Please indicate Address!" }
             }
         } while (address.isNullOrEmpty())
         do {
             activity.Logger().log.info { "Please Enter Mobile No. of Customer:" }
             mobileno = readLine()
             if (mobileno.isNullOrEmpty()) {
-                activity.Logger().log.warn { "Please indicate Mobile No.:" }
+                activity.Logger().log.warn { "Please indicate Mobile No.!" }
             }
         } while (mobileno.isNullOrEmpty())
 
@@ -546,15 +585,17 @@ class FastFood {
         arrsalads.add(saldata)
     }
 
+    //    Class Main method
     fun main() {
-        FastFood()
+        FastFood().showmenu()
     }
-/**
+
+    /**
     fun showFood(
     arrfreshFruits: ArrayList<FreshFruits>, arrshakes: ArrayList<Shake>,
     arrjuices: ArrayList<Juices>, arrsandwiches: ArrayList<Sandwiches>, arrsalads: ArrayList<Salads>
     )
-    */
+     */
     fun showFood() {
 //    show fresh fruits, shakes, juices, sandwiches, and salads.
         println("-------------------------------------- FRUITS ---------------------------------------------------")
