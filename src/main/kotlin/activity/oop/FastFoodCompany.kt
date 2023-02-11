@@ -391,19 +391,19 @@ class FastFoodCompany {
             } while (menu == null)
 
             if (menu == 1) {
-                addcustomer()
+                addcustomer()   //function to add customer
             } else if (menu == 2) {
-                editcustomerorder()
+                editcustomerorder() //function to edit the customer
             } else if (menu == 3) {
-                showcart()
+                showcart()  //function to show cart of specific customer
             } else if (menu == 4) {
-                updateorderstatus()
+                updateorderstatus() //function to update the status of order
             } else if (menu == 5) {
-                showorders()
+                showorders()    //function to show all order
             } else if (menu == 6) {
-                showFood()
+                showFood()  //function to  show food by category
             } else if (menu == 6) {
-                exitProcess(0)
+                exitProcess(0)  //function to terminate the program
             }
 
         } while (menu in 1..5)
@@ -512,7 +512,7 @@ class FastFoodCompany {
             }
         } while (item == null || !found || confirm[0].equals('Y', true) || confirm.equals("Yes", true))
 
-        cart.updateOrder(OrderStatus.SENT_TO_KITCHEN)
+        cart.updateOrder(OrderStatus.UNKNOWN)
         cart.show(customer)
     }
 
@@ -536,9 +536,10 @@ class FastFoodCompany {
                 noofentry++
             }
         }
-        if (noofentry > 1) {
+        if ((noofentry > 1) and found) {
+            found = false
             do {
-                println("Enter size of Shake e < SMALL | MEDIUM | LARGE >:")
+                println("Enter size of Shake < SMALL | MEDIUM | LARGE >:")
                 size = readLine() ?: "SMALL"
                 for (shake in arrshakes) {
                     if (item.equals(shake.name, true) and size.equals(shake.size, true)) {
@@ -548,7 +549,7 @@ class FastFoodCompany {
                         noofentry = 0
                     }
                 }
-            } while (size == null)
+            } while (size.isNullOrEmpty() or !found)
         }
 //        Check juices
 //        activity.Logger().log.info { "Item is not belong to Shakes.." }
@@ -560,7 +561,8 @@ class FastFoodCompany {
                 noofentry++
             }
         }
-        if (noofentry > 1) {
+        if ((noofentry > 1) and found) {
+            found = false
             do {
                 println("Enter size of Juice < SMALL | MEDIUM | LARGE >:")
                 size = readLine() ?: "SMALL"
@@ -572,7 +574,7 @@ class FastFoodCompany {
                         noofentry = 0
                     }
                 }
-            } while (size == null)
+            } while (size.isNullOrEmpty() or !found)
         }
 //        Check sandwiches
 //        activity.Logger().log.info { "Item is not belong to Juices.." }
@@ -584,7 +586,8 @@ class FastFoodCompany {
                 noofentry++
             }
         }
-        if (noofentry > 1) {
+        if ((noofentry > 1) and found) {
+            found = false
             do {
                 println("Enter type of Sandwich < REGULAR | SPECIAL >:")
                 type = readLine() ?: "REGULAR"
@@ -596,7 +599,7 @@ class FastFoodCompany {
                         noofentry = 0
                     }
                 }
-            } while (type == null)
+            } while (type.isNullOrEmpty() or !found)
         }
 //        Check salads
 //        activity.Logger().log.info { "Item is not belong to Sandwiches.." }
@@ -608,7 +611,8 @@ class FastFoodCompany {
                 noofentry++
             }
         }
-        if (noofentry > 1) {
+        if ((noofentry > 1) and found) {
+            found = false
             do {
                 println("Enter type of Sandwich < REGULAR | SPECIAL >:")
                 type = readLine() ?: "REGULAR"
@@ -620,7 +624,7 @@ class FastFoodCompany {
                         noofentry = 0
                     }
                 }
-            } while (type == null)
+            } while (type.isNullOrEmpty() or !found)
         }
         return found
     }
@@ -666,6 +670,30 @@ class FastFoodCompany {
             activity.Logger().log.info { "Customer found!" }
             activity.Logger().log.info { "Showing Cart" }
             this.cart.show(this.customer)
+            do {
+
+                do {
+                    println("-------------------------------------- MENU ---------------------------------------------------")
+                    println("[1]ADD\t[2]EDIT\t[3]DELETE\t[4]CANCEL ORDER")
+                    menu = readLine()!!.toInt()
+                    if (menu == null) {
+                        activity.Logger().log.warn { "Please indicate Menu!" }
+                    }
+                } while (menu == null)
+
+                if (menu == 1) {
+                    //add new item
+                } else if (menu == 2) {
+                    //edit specific item
+                } else if (menu == 3) {
+                    //delete specific item
+                } else if (menu == 4) {
+                    activity.Logger().log.warn { "Exiting edit order.." }
+                }
+
+            } while (menu !in 1..4)
+
+
         } else {
             activity.Logger().log.warn { "Customer not found!" }
         }
@@ -673,16 +701,85 @@ class FastFoodCompany {
 
     private fun showorders() {
         println("----------------------------------------------------- list Of Orders -------------------------------------------------------")
-        for ((customer, cart) in orders){
+        for ((customer, cart) in orders) {
             cart.show(customer)
             println("------------------------------------------------------------------------------------------------------------")
         }
     }
 
     private fun updateorderstatus() {
+        println("-------------------------------------- ENTER FIRST AND LASTNAME TO UPDATE CART ---------------------------------------------------")
+        do {
+            activity.Logger().log.info { "Please Enter Firstname of Customer:" }
+            firstName = readLine()
+            if (firstName.isNullOrEmpty()) {
+                activity.Logger().log.warn { "Please indicate Firstname." }
+            }
+        } while (firstName.isNullOrEmpty())
+        do {
+            activity.Logger().log.info { "Please Enter Lastname of Customer:" }
+            lastName = readLine()
+            if (lastName.isNullOrEmpty()) {
+                activity.Logger().log.warn { "Please indicate Lastname." }
+            }
+        } while (lastName.isNullOrEmpty())
+        do {
+            activity.Logger().log.info { "Please Enter Mobile No.:" }
+            mobileno = readLine()
+            if (mobileno.isNullOrEmpty()) {
+                activity.Logger().log.warn { "Please indicate Mobile No.!" }
+            }
+        } while (mobileno.isNullOrEmpty())
+
+        var found = false
+
+        for ((customer, cart) in orders) {
+            if (firstName.equals(customer.firstName, true) and lastName.equals(
+                    customer.lastName,
+                    true
+                ) and mobileno.equals(customer.mobileno, true)
+            ) {
+                found = true
+                this.customer = customer
+                this.cart = cart
+            }
+        }
+        if (found) {
+            this.cart.show(this.customer)
+            var statuslist = OrderStatus.values()
+
+            var option: Int? = null
+            println("Please choose option to update status:")
+            for ((index, status) in statuslist.withIndex()) {
+                println("[${index + 1}] - $status")
+            }
+            try {
+                option = readLine()!!.toInt()
+            } catch (e: Exception) {
+                activity.Logger().log.warn { e.message }
+                0
+            }
+            if (option == null) {
+                activity.Logger().log.warn { "Please indicate Mobile No.!" }
+            }
+            when (option) {
+                1 -> this.cart.updateOrder(statuslist[option - 1])
+                2 -> this.cart.updateOrder(statuslist[option - 1])
+                3 -> this.cart.updateOrder(statuslist[option - 1])
+                4 -> this.cart.updateOrder(statuslist[option - 1])
+                5 -> this.cart.updateOrder(statuslist[option - 1])
+                6 -> this.cart.updateOrder(statuslist[option - 1])
+                7 -> this.cart.updateOrder(statuslist[option - 1])
+                else -> activity.Logger().log.warn { "Option is not available. Canceling update order status..." }
+            }
+            if (option in 1..7) {
+                activity.Logger().log.info { "Order status updated to ! ${this.cart.updateOrder(statuslist[option!! - 1])}" }
+            }
+        }
     }
 
-    private fun showcart() {println("-------------------------------------- ENTER FIRST AND LASTNAME TO UPDATE CART ---------------------------------------------------")
+    private fun showcart() {
+        println("-------------------------------------- ENTER FIRST AND LASTNAME TO UPDATE CART ---------------------------------------------------")
         do {
             activity.Logger().log.info { "Please Enter Firstname of Customer:" }
             firstName = readLine()
@@ -761,7 +858,7 @@ class Cart(var customer: Customer?) {
     fun show(customer: Customer) {
         var totalamount: Double = 0.0
         println("-------------------------------------- CUSTOMER INFO. ---------------------------------------------------")
-        customer.showdetailts()
+        customer.showDetails()
         println("-------------------------------------- CART DETAILS ---------------------------------------------------")
         println("Cart ID: $uniqueId")
         println("Status: $status")
@@ -769,7 +866,9 @@ class Cart(var customer: Customer?) {
         println("Item".padEnd(35) + "Price".padEnd(11) + "Quantity".padEnd(15) + "Total")
         for ((product, qty) in items) {
             println(
-                "${product.name.padEnd(34)} ${DecimalFormat("#00.00").format(product.price).toString().padEnd(10)} ${
+                "${product.name.padEnd(34)} ${
+                    DecimalFormat("#00.00").format(product.price).toString().padEnd(10)
+                } ${
                     qty.toString().padEnd(13)
                 }  ${DecimalFormat("#00.00").format(product.price * qty)}"
             )
@@ -785,13 +884,14 @@ class Cart(var customer: Customer?) {
     }
 }
 
+
 data class Customer(
     var firstName: String, var lastName: String,
     var address: String, var mobileno: String
 ) {
     constructor() : this("", "", "", "")
 
-    fun showdetailts() {
+    fun showDetails() {
         println(
             "Firstname: $firstName \n" +
                     "Lastname: $lastName \n" +
@@ -820,6 +920,7 @@ class FreshFruits(name: String, price: Double) : Product(name, price) {
 
     //    add 1 year
 //    var dateexp: LocalDate = LocalDate.now().plusDays(365)
+
     constructor() : this("", 0.0)
 }
 
