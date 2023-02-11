@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa675f3b-b95f-4bb1-8b6e-8083993a3846" name="Changes" comment="KODEGO MD2P &#10;&#10;Working with FastFoodCompany OOP Exercises">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/activity/05/Activity_05_b.kt" afterDir="false" />
+    <list default="true" id="fa675f3b-b95f-4bb1-8b6e-8083993a3846" name="Changes" comment="KODEGO MD2P &#10;&#10;Working with Activity_05_a">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/05/Activity_05_a.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/05/Activity_05_a.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/oop/FastFoodCompany.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/oop/FastFoodCompany.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675848460490</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="KODEGO MD2P &#10;&#10;Working with Activity_05_a">
+      <created>1676135873229</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1676135873229</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -324,7 +329,8 @@
     <MESSAGE value="KODEGO MD2P &#10;&#10;Done with Activity 3 ABC" />
     <MESSAGE value="KODEGO MD2P &#10;&#10;Working with Activity 4" />
     <MESSAGE value="KODEGO MD2P &#10;&#10;Working with FastFoodCompany OOP Exercises" />
-    <option name="LAST_COMMIT_MESSAGE" value="KODEGO MD2P &#10;&#10;Working with FastFoodCompany OOP Exercises" />
+    <MESSAGE value="KODEGO MD2P &#10;&#10;Working with Activity_05_a" />
+    <option name="LAST_COMMIT_MESSAGE" value="KODEGO MD2P &#10;&#10;Working with Activity_05_a" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

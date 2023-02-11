@@ -132,6 +132,7 @@ class Activity_05_a {
 }
 
 fun main() {
+    Activity_05_a()
 }
 
 
