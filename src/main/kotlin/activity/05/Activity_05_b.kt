@@ -22,25 +22,98 @@ class `Activity_05_b` {
 
 fun main() {
 
+    AudioVideo("","")
 }
 
-open class Publication{
-    var title : String =""
+open class Publication {
+    var title: String = ""
+    var description: String = ""
     var date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-d"))
 
-    constructor(title: String, Date: String)
+    constructor(title: String, description: String) {
+        this.title = title
+        this.description = description
+    }
 }
 
-class Book(title: String, date: String): Publication(title, date){
-    var authors = ArrayList<Authors>()
+class Book(title: String, description: String) : Publication(title, description) {
+    var writer = ArrayList<Writer>()
 }
 
-data class Authors(
-    var firstName: String, var lastName: String
-) {
-    constructor() : this("", "")
+class Magazine(title: String, description: String) : Publication(title, description) {
+    var writer = ArrayList<Writer>()
+}
+
+class Newspaper(title: String, description: String) : Publication(title, description) {
+    var writer = ArrayList<Writer>()
+}
+
+class Comics(title: String, description: String) : Publication(title, description) {
+    var writer = ArrayList<Writer>()
+}
+
+open class Materials{
+    var fileName : String = ""
+
+    constructor(fileName: String) {
+        this.fileName = fileName
+    }
+}
+
+interface AudioVideoType{
+
+    var type: String?
+    fun materialtype(type: String)
+}
+class AudioVideo(fileName: String, override var type: String?):Materials(fileName), AudioVideoType{
+    var time:Any? = null
+    override fun materialtype(type: String) {
+        this.type = type
+    }
+
+}
+class Recordings(fileName: String):Materials(fileName){
+    var time:Any? = null
+}
+class Documentary(fileName: String):Materials(fileName){
+
+}
+class Movies(fileName: String):Materials(fileName){
+    var title: String? = null
+    var time:Any? = null
+    var arrCast = HashMap<String, String>()// Name, Position
+
+}
+class Powerpoint(fileName: String):Materials(fileName){
+    var title: String? = null
+    var noOfSlide: Int? = null
+}
+
+
+open class Writer {
+
+    var firstName: String = ""
+    var lastName: String = ""
+
+    constructor(firstName: String, lastName: String) {
+        this.firstName = firstName
+        this.lastName = lastName
+    }
+}
+
+class Authors(firstName: String, lastName: String) : Writer(firstName, lastName) {
 
     fun showDetails() {
+        println(
+            "Firstname: $firstName \n" +
+                    "Lastname: $lastName"
+        )
+    }
+}
+
+class Illustrators(firstName: String, lastName: String) : Writer(firstName, lastName)  {
+
+        fun showDetails() {
         println(
             "Firstname: $firstName \n" +
                     "Lastname: $lastName"

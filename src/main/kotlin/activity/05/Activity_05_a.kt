@@ -41,12 +41,12 @@ class Activity_05_a {
     var arrPerson = ArrayList<Person>()
     var student = Student()
     var arrStudent = ArrayList<Student>()
-    var studentUndergraduate = UnderGraduateStudent()
-    var arrStudentUnderGraduate = ArrayList<UnderGraduateStudent>()
-    var studentGraduate = GraduateStudent()
-    var arrStudentGraduateStudent = ArrayList<GraduateStudent>()
-    var studentMaster = MasterStudent()
-    var arrStudentMasterStudent = ArrayList<MasterStudent>()
+//    var studentUndergraduate = UnderGraduateStudent()
+//    var arrStudentUnderGraduate = ArrayList<UnderGraduateStudent>()
+//    var studentGraduate = GraduateStudent()
+//    var arrStudentGraduateStudent = ArrayList<GraduateStudent>()
+//    var studentMaster = MasterStudent()
+//    var arrStudentMasterStudent = ArrayList<MasterStudent>()
 
     constructor() {
         showmenu()
@@ -72,11 +72,11 @@ class Activity_05_a {
                 deletestudent()
             } else if (menu == 4) {
                 showstudents()
-            } else if (menu == 4) {
+            } else if (menu == 5) {
                 exitProcess(0)  //function to terminate the program
             }
 
-        } while (menu in 1..5)
+        } while (menu in 1..4)
 
     }
 
@@ -91,30 +91,29 @@ class Activity_05_a {
         Student 1, Computer Technician, Network Technician, Electrical Technician
         Student 2, Public Speaking, Debate, Advertising Article
          */
-        student.addcertificate("Computer Technician")
-        student.addcertificate("Network Technician")
-        student.addcertificate("Electrical Technician")
+        student.addCertificate("Computer Technician")
+        student.addCertificate("Network Technician")
+        student.addCertificate("Electrical Technician")
         arrPerson.add(student)
 
-        var college1 = College("DAVAO DEL NORTE STATE COLLEGE", 2008)
+//        var college1 = College("DAVAO DEL NORTE STATE COLLEGE", 2008)
 //        data class Degree(var degree: String,var yearStart: Int,var yearEnd: Int,var status: StudentStatus)
-        var degree1 = Degree("Bachelor of Science in Information Technology", 2008, 2014, StudentStatus.GRADUATED)
-        var degree2 = Degree("Bachelor of Science in Marine Biology", 2018, 2022, StudentStatus.GRADUATED)
-        college1.degreelist.add(degree1)
-        college1.degreelist.add(degree2)
-        studentGraduate = GraduateStudent(student)
+//        var degree1 = Degree("Bachelor of Science in Information Technology", 2008, 2014, StudentStatus.GRADUATED)
+//        var degree2 = Degree("Bachelor of Science in Marine Biology", 2018, 2022, StudentStatus.GRADUATED)
+//        college1.degreelist.add(degree1)
+//        college1.degreelist.add(degree2)
+//        studentGraduate = GraduateStudent(student)
 //        College(var collegeName: String, var year: String, var degreelist: ArrayList<Degree>?)
-        studentGraduate.collegelist.add(college1)
-        arrStudentGraduateStudent.add(studentGraduate)
-
+//        studentGraduate.collegelist.add(college1)
+//        arrStudentGraduateStudent.add(studentGraduate)
 
 //        Student 2
         student = Student("Rose Marie", "Garcia", "Recentes", Date(1993, 7, 16))
-        student.addcertificate("Public Speaking")
-        student.addcertificate("Debate")
-        student.addcertificate("Advertising Article")
+        student.addCertificate("Public Speaking")
+        student.addCertificate("Debate")
+        student.addCertificate("Advertising Article")
         arrPerson.add(student)
-        studentUndergraduate = UnderGraduateStudent(student)
+//        studentUndergraduate = UnderGraduateStudent(student)
     }
 
     private fun editstudent() {
@@ -126,7 +125,18 @@ class Activity_05_a {
     }
 
     private fun showstudents() {
-        TODO("Not yet implemented")
+
+        for (person in arrPerson) {
+            println("Class: ${person.javaClass.toString()}")
+            when (person) {
+                is Student -> {
+                    println(person.fullname())
+                }
+            }
+        }
+        for (student in arrStudent) {
+            println(student.showcertificates())
+        }
     }
 
 }
@@ -163,43 +173,71 @@ open class Person {
 }
 
 //Create a Student class that inherits the Person class. A student has a year he/she entered the school. A student has an ID.
-open class Student(firstname: String, middlename: String, lastname: String, birthdate: Date?) :
-    Person(firstname, middlename, lastname, birthdate!!) {
+class Student(firstname: String, middlename: String, lastname: String, birthdate: Date?) :
+    Person(firstname, middlename, lastname, birthdate!!), CertificateStudent, UnderGraduateStudent, GraduateStudent,
+    MasterStudent {
     var ID: String = ""
     var yearEntered: String = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy"))
 
 
     var certificatelist = ArrayList<String>()
-
-//    var certificatelist = ArrayList<CertificateStudent>()
+    var arrcollege = ArrayList<College>()
 
     constructor() : this("", "", "", null)
 
-    fun addcertificate(certificate: String) {
-        certificatelist.add(certificate)
-    }
-
+    /*    fun addcertificate(certificate: String) {
+            certificatelist.add(certificate)
+        }*/
     fun showcertificates() {
         println("-------------------------------------- LIST OF CERTIFICATE ---------------------------------------------------")
         for (certificate in certificatelist) {
             println(certificate)
         }
     }
+
+    override fun addCertificate(certificate: String) {
+        certificatelist.add(certificate)
+    }
+
+    override fun addCollegeDegree(college: String, yearJoined: Int, degree: ArrayList<Degree>) {
+        var college = College(college,yearJoined)
+        college.degree = degree
+        arrcollege.add(college)
+    }
 }
 
-/*
-class UnderGraduateStudent(firstname: String, middlename: String, lastname: String, birthdate: Date?) :
-    Student(firstname, middlename, lastname, birthdate!!) {
+interface CertificateStudent {
+    fun addCertificate(certificate: String)
+}
+
+interface UnderGraduateStudent {
+    fun addCollegeDegree(college: String, yearJoined: Int, arrDegree: ArrayList<Degree>)
+}
+
+interface MasterStudent {
 
 }
-class MasterStudent(firstname: String, middlename: String, lastname: String, birthdate: Date?) :
-    Person(firstname, middlename, lastname, birthdate!!) {
+
+interface GraduateStudent {
 
 }
-class GraduateStudent(firstname: String, middlename: String, lastname: String, birthdate: Date?) :
-    Person(firstname, middlename, lastname, birthdate!!) {
 
-}*/
+class College(
+    var collegeName: String,
+    var year: Int
+) {
+
+    var degree = ArrayList<Degree>()
+
+}
+
+data class Degree(
+    var degree: String,
+    var yearStart: Int,
+    var yearEnd: Int,
+    var status: StudentStatus
+)
+
 /**
 A student has different statuses
 Status : Leave of Absence, Ongoing, Graduated, Will Begin, Unknown, Shifted,
@@ -226,6 +264,8 @@ Example :
 Undergraduate Student 1,  College of Engineering, Bachelor of Interior Design, 2020(start), 2022(end)
 Note : end will only contain a value if he or she is done with the course
  * */
+/*
+
 class UnderGraduateStudent(student: Student?) {
 
     var collegelist = ArrayList<College>()
@@ -266,9 +306,11 @@ data class Degree(
 
 }
 
+*/
 /**
 The Master Student has a list of college(s) he or she belongs to, there is a year he or she joined the college, and has name of the master degree he or she is getting.
- * */
+ * *//*
+
 
 open class MasterStudent(student: Student?) {
     var collegelist = ArrayList<College>()
@@ -293,3 +335,4 @@ open class GraduateStudent(student: Student?) {
         }
     }
 }
+*/
