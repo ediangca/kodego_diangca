@@ -1,24 +1,15 @@
 package activity.`05`
 
 /**
-You are tasked to create an application for a fast food company.
+Covered Topic(s) : OOP
 
-The application will do the following :
-
-1. Take orders of the customers
-- Create a cart that will contain the items bought by a customer
-- Each cart has a unique id
-- Each card belongs to a customer
-- a customer has an address mobile number  first name and last name.
-
-2. Show the status of the orders if they are sent to the kitchen, being prepared, for pick-up, for delivery, delivered, cancelled, paid, unknown.
-- Use enumaration
-- Create a function "Update order" which will update the cart of a specific customer
-
-3. Show the items being sold. The fast food company sells fresh fruits, shakes, juices, sandwiches, and salads.
-- Create 5 items for each category of items being sold.
-- Use OOP concepts to create the classes for the food category.
-- You must use Inheritance, Polymorphism, Encapsulation, Abstraction
+1. Create a parent class for all the products in the grocery.
+2. Create a cart to store the groceries.
+3. Create a Main class where you will add the Cart.
+4. In the main class add the following functions
+a - add to cart > add an item in the cart
+b - remove from cart > remove item in the cart
+c - check out cart > compute the total cost of the cart.
  * */
 import java.text.DecimalFormat
 import java.time.format.DateTimeFormatter
@@ -30,6 +21,7 @@ import kotlin.system.exitProcess
 fun main() {
     Activity_05_c()
 }
+
 class Activity_05_c {
 
     var formatdate: DateTimeFormatter? = DateTimeFormatter.ofPattern("yyyy-MM-d")
@@ -450,6 +442,10 @@ class Activity_05_c {
         cart.uniqueId = "CUS-00" + cart.Id
         orders[customer] = cart
 
+        additemtocart()
+    }
+
+    private fun additemtocart() {
         do {
 //    show fresh fruits, shakes, juices, sandwiches, and salads.
             showFood()
@@ -678,20 +674,25 @@ class Activity_05_c {
 
                 do {
                     println("-------------------------------------- MENU ---------------------------------------------------")
-                    println("[1]ADD\t[2]EDIT\t[3]DELETE\t[4]CANCEL ORDER")
+                    println("[1]ADD\t[2]REMOVE\t[3]CANCEL")
                     menu = readLine()!!.toInt()
                     if (menu == null) {
                         activity.Logger().log.warn { "Please indicate Menu!" }
                     }
                 } while (menu == null)
-
                 if (menu == 1) {
-                    //add new item
+                    additemtocart() //add new item
                 } else if (menu == 2) {
-                    //edit specific item
+                    do {
+                        activity.Logger().log.info { "Please Enter Name of item to remove:" }
+                        item = readLine()
+                        if (item.isNullOrEmpty()) {
+                            activity.Logger().log.warn { "Please indicate Name of item !" }
+                        }
+                    } while (item.isNullOrEmpty())
+                    this.cart.remove(item!!)
+                    //remove specific item
                 } else if (menu == 3) {
-                    //delete specific item
-                } else if (menu == 4) {
                     activity.Logger().log.warn { "Exiting edit order.." }
                 }
 
@@ -883,6 +884,25 @@ class Cart(var customer: Customer?) {
             }"
         )
     }
+
+    fun remove(item: String) {
+        var found = false
+        var details: String = ""
+        var productfound: Product? = null
+
+        for ((product, qty) in items) {
+            if (product.name.equals(item, true)) {
+                found = true
+                details = "Order Details: ${product.toString()} , Quantity: $qty \tTotalL:${product.price*qty}"
+                productfound = product
+            }
+        }
+        if(found){
+            println(details)
+            items.remove(productfound)
+            activity.Logger().log.info { "Item Successfully removed to cart." }
+        }
+    }
 }
 
 
@@ -910,6 +930,10 @@ open class Product {
     constructor(name: String, price: Double) {
         this.name = name
         this.price = price
+    }
+
+    override fun toString(): String {
+        return "Product(name='$name', price=$price)"
     }
 
 }
