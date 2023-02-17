@@ -2,7 +2,6 @@ package activity.`05`
 
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 /**
 Covered Topic(s) : OOP
@@ -22,7 +21,32 @@ class `Activity_05_b` {
 
 fun main() {
 
-    AudioVideo("","")
+
+    var materials: Materials = AudioVideo()
+
+    when(materials){
+        is AudioVideo -> {
+            materials.fileName = "Tutorial"
+            materials.Type("Video")
+        }
+        is Powerpoint -> {
+            materials.noOfSlide = 10
+        }
+        is Recordings ->{
+            materials.time = 0.0000
+        }
+        is Documentary ->{
+            materials.title = "Android Programming (Kotlin)"
+        }
+        is Movies ->{
+            materials.title = "KodeGo Presents"
+            materials.time = "2:30:00"
+            materials.arrCast.put("Dwayne Jhonson", "The Rock")
+            materials.arrCast.put("Keanu Reeves", "John Wick")
+        }
+    }
+
+
 }
 
 open class Publication {
@@ -52,41 +76,54 @@ class Comics(title: String, description: String) : Publication(title, descriptio
     var writer = ArrayList<Writer>()
 }
 
-open class Materials{
-    var fileName : String = ""
 
-    constructor(fileName: String) {
-        this.fileName = fileName
-    }
+abstract class Materials {
+    var fileName: String = ""
+    var fileType: String = ""
+
+    abstract fun getFilename(): String
+
+}
+interface  AudioVideoType{
+    fun Type(type: String)
+    fun getType():String
 }
 
-interface AudioVideoType{
-
-    var type: String?
-    fun materialtype(type: String)
-}
-class AudioVideo(fileName: String, override var type: String?):Materials(fileName), AudioVideoType{
+class AudioVideo:Materials() , AudioVideoType{
     var time:Any? = null
-    override fun materialtype(type: String) {
-        this.type = type
+
+    override fun getFilename(): String = fileName
+    override fun Type(type: String) {
+        this.fileType = type
     }
 
-}
-class Recordings(fileName: String):Materials(fileName){
-    var time:Any? = null
-}
-class Documentary(fileName: String):Materials(fileName){
+    override fun getType(): String = fileType
+
 
 }
-class Movies(fileName: String):Materials(fileName){
+class Recordings:Materials(){
+    var time:Any? = null
+    override fun getFilename(): String = fileName
+}
+class Documentary :Materials(){
+    var title: String? = null
+
+    override fun getFilename(): String = fileName
+
+}
+class Movies:Materials(){
     var title: String? = null
     var time:Any? = null
     var arrCast = HashMap<String, String>()// Name, Position
 
+    override fun getFilename(): String = fileName
+
 }
-class Powerpoint(fileName: String):Materials(fileName){
+class Powerpoint: Materials() {
     var title: String? = null
     var noOfSlide: Int? = null
+    override fun getFilename(): String = fileName
+
 }
 
 
