@@ -71,6 +71,14 @@ fun main() {
 
     var shape: Shapes = Triangle()
 }
+abstract class ModelView{
+    var person: Person = Person()
+
+    fun showPerson(){
+
+    }
+    abstract fun show(string: String)
+}
 
 class Person {
     var firstName: String? = null

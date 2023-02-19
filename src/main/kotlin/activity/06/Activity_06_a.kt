@@ -4,7 +4,8 @@ package activity.`06`
 Using Activity 05 A
 
 Create a function that will check the student's grade.
-The function will accept an array with 10 entries only. It will throw the following the following exceptions
+The function will accept an array with 10 entries only.
+It will throw the following the following exceptions
 if the array size is greater than 10 throw invalid input
 if the array contains 0 throw incomplete grades
 
@@ -16,6 +17,8 @@ import java.time.format.DateTimeFormatter
 import java.util.Date
 import kotlin.system.exitProcess
 
+
+class ArrayExemption(message: String) : Exception(message)
 class Activity_06_a {
 
     var menu: Int = 0
@@ -35,6 +38,37 @@ class Activity_06_a {
     constructor() {
         showmenu()
     }
+
+    fun checkStudentGrades(arrPerson: ArrayList<Person>) {
+        if (arrPerson.size > 10) throw ArrayExemption("Invalid Input")
+        else if (arrPerson.size == 0) throw ArrayExemption("Incomplete grades")
+        else
+            for (person in arrPerson) {
+                when (person) {
+                    is Student -> {
+                        activity.Logger().log.info { "print grade" }
+                    }
+
+                    is UnderGraduateStudent -> {
+                        activity.Logger().log.info { "print grade" }
+                    }
+
+                    is GraduateStudent -> {
+                        activity.Logger().log.info { "print grade" }
+                    }
+
+                    is MasterStudent -> {
+                        activity.Logger().log.info { "print grade" }
+                    }
+                    else ->
+                        activity.Logger().log.info { "record not found!" }
+
+                }
+            }
+
+
+    }
+
 
     private fun showmenu() {
 
@@ -199,7 +233,17 @@ class Activity_06_a {
                     } while (confirm[0].equals('Y', true) || confirm.equals("Yes", true))
                 }
 
-                arrPerson.add(student)
+                addPerson(student)
+//                try {
+//                    arrPerson.add(person)
+//                } catch (aioobe: ArrayIndexOutOfBoundsException) {
+//                    println("ArrayIndexOutOfBoundsException ${aioobe.message}")
+//                } catch (e: Exception) {
+//                    println("Exception ${e.message}")
+//                } finally {
+//                    println("")
+//                }
+
             }
 
             2 -> {
@@ -234,7 +278,8 @@ class Activity_06_a {
 
                 } while (confirm[0].equals('Y', true) || confirm.equals("Yes", true))
 
-                arrPerson.add(undergraduatestudent)
+//                addPerson(undergraduatestudent)
+                addPerson(undergraduatestudent)
             }
 
             3 -> {
@@ -268,7 +313,8 @@ class Activity_06_a {
 
                 } while (confirm[0].equals('Y', true) || confirm.equals("Yes", true))
 
-                arrPerson.add(graduatestudent)
+//                arrPerson.add(graduatestudent)
+                addPerson(graduatestudent)
             }
 
             4 -> {
@@ -303,7 +349,8 @@ class Activity_06_a {
 
                 } while (confirm[0].equals('Y', true) || confirm.equals("Yes", true))
 
-                arrPerson.add(masterstudent)
+//                arrPerson.add(masterstudent)
+                addPerson(masterstudent)
             }
 
             else ->
@@ -311,6 +358,12 @@ class Activity_06_a {
 
         }
 
+    }
+
+    @Throws(Exception::class)
+    private fun addPerson(person: Person) {
+        throw Exception()
+        this.arrPerson.add(person)
     }
 
     private fun setstatus(yearEnd: Int?): StudentStatus {

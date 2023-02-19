@@ -22,6 +22,7 @@ class `Activity_05_b` {
 fun main() {
 
 
+    var book = Book("Math 1", "Algebra")
     var materials: Materials = AudioVideo()
 
     when(materials){
@@ -62,6 +63,8 @@ open class Publication {
 
 class Book(title: String, description: String) : Publication(title, description) {
     var writer = ArrayList<Writer>()
+
+    var status = BookStatus.AVAILABLE
 }
 
 class Magazine(title: String, description: String) : Publication(title, description) {
@@ -76,6 +79,14 @@ class Comics(title: String, description: String) : Publication(title, descriptio
     var writer = ArrayList<Writer>()
 }
 
+enum class BookStatus{
+    AVAILABLE,
+    RESERVED,
+    FOR_INTERNAL_USE,
+    FIXING,
+    BORROWED,
+    RETURNED,
+}
 
 abstract class Materials {
     var fileName: String = ""

@@ -16,8 +16,8 @@ Instructions :
  **/
 
 
-private var arrBook = ArrayList<String>(20)
 fun main() {
+    var library: Library = Library()
     var menu: Int = 0
 
     println("----- Simple Book Address book -----")
@@ -51,7 +51,7 @@ fun main() {
                     activity.Logger().log.info { "Invalid empty input. Please try again!" }
                 }
             } while (book.isEmpty())
-            addBook(book)
+            library.addBook(book)
         } else if (menu == 2) {
             do {
                 print("Please enter Book Name to edit: ")
@@ -60,7 +60,7 @@ fun main() {
                     activity.Logger().log.info { "Invalid empty input. Please try again!" }
                 }
             } while (book.isEmpty())
-            editBook(book)
+            library.editBook(book)
         } else if (menu == 3) {
             do {
                 print("Please enter Book Name to edit: ")
@@ -69,9 +69,9 @@ fun main() {
                     activity.Logger().log.info { "Invalid empty input. Please try again!" }
                 }
             } while (book.isEmpty())
-            removeBook(book)
+            library.removeBook(book)
         } else if (menu == 4) {
-            println("Number of Book : ${countBooks()}")
+            println("Number of Book : ${library.countBooks()}")
         } else if (menu == 5) {
             do {
                 print("Please enter Book Name to check: ")
@@ -80,7 +80,7 @@ fun main() {
                     activity.Logger().log.info { "Invalid empty input. Please try again!" }
                 }
             } while (book.isEmpty())
-            if (isBookInRecord(book)) println("Found Record!") else println("No Record!")
+            if (library.isBookInRecord(book)) println("Found Record!") else println("No Record!")
         } else if (menu == 6) {
             do {
                 print("Please enter Book Name: ")
@@ -90,7 +90,7 @@ fun main() {
                 }
             } while (book.isEmpty())
             println("Book")
-            for (b in searchBookWildSearch(book))
+            for (b in library.searchBookWildSearch(book))
                 println("$b")
         } else if (menu == 7) {
             var arrstring = ArrayList<String>()
@@ -108,131 +108,139 @@ fun main() {
                 print("Do you really want to add more input? [Y|N]")
                 var confirm = readLine() ?: "Y"
             } while (confirm[0].equals('Y', true) || confirm.equals("Yes", true))
-            if (searchBookName(arrstring).isNotEmpty()) for ((index, book) in arrBook.withIndex())
+            if (library.searchBookName(arrstring).isNotEmpty()) for ((index, book) in library.arrBook.withIndex())
                 println("Index\tName \n $index\t\t$book") else activity.Logger().log.warn { "No Record" }
         } else if (menu == 8) {
-            showBooks()
+            library.showBooks()
         } else exitProcess(0)
 
     } while (menu in 1..8)
 
 }
 
-fun isBookInRecord(name: String): Boolean {
-    var isfound = false
+class Library {
 
-    for ((index, book) in arrBook.withIndex()) {
-        if (book.equals(book, true)) {
-            isfound = true
-            activity.Logger().log.info { "Book <$book> found at index $index" }
-        }
-    }
-    return isfound
-}
 
-fun addBook(name: String) {
+    var arrBook = ArrayList<String>(20)
 
-    print("Do you really want to add the book? [Y|N]: ")
-    var confirm = readLine() ?: "Y"
-    if (confirm[0].equals('Y', true) || confirm.equals("Yes", true)) {
-        arrBook.add(name)
-        activity.Logger().log.info { "Book has been successfully saved." }
-    }
-}
+    constructor()
 
-fun editBook(name: String) {
-    var isfound = false
-    var indexAt = 0
+    fun isBookInRecord(name: String): Boolean {
+        var isfound = false
 
-    for ((index, book) in arrBook.withIndex()) {
-        if (book.equals(name, true)) {
-            isfound = true
-            activity.Logger().log.info { "Book <$book> found at index $index" }
-            indexAt = index
-        }
-    }
-    if (!isfound) {
-        do {
-            print("Please enter Book Name to update: ")
-            var book = readLine() ?: ""
-            book = book.replace("\\s".toRegex(), "")
-            if (book.isEmpty()) {
-                activity.Logger().log.info { "Invalid empty input. Please try again!" }
+        for ((index, book) in arrBook.withIndex()) {
+            if (book.equals(book, true)) {
+                isfound = true
+                activity.Logger().log.info { "Book <$book> found at index $index" }
             }
-        } while (book.isEmpty())
-        arrBook[indexAt] = name
-        activity.Logger().log.info { "Book has been successfully updated." }
-    } else {
-        activity.Logger().log.warn { "Record not found!" }
-    }
-}
-
-fun removeBook(name: String) {
-    var isfound = false
-    var indexAt = 0
-    for ((index, book) in arrBook.withIndex()) {
-        if (book.equals(book, true)) {
-            isfound = true
-            activity.Logger().log.info { "Book <$book> found at index -- $index" }
-            indexAt = index
         }
+        return isfound
     }
-    if (isfound) {
-        print("Do you really want to delete the book record? [Y|N] : ")
+
+    fun addBook(name: String) {
+
+        print("Do you really want to add the book? [Y|N]: ")
         var confirm = readLine() ?: "Y"
         if (confirm[0].equals('Y', true) || confirm.equals("Yes", true)) {
-            arrBook.removeAt(indexAt)
-        }
-        activity.Logger().log.info { "Book has been successfully deleted." }
-    } else {
-        activity.Logger().log.warn { "Record not found!" }
-    }
-}
-
-fun countBooks(): Int {
-    return arrBook.size
-}
-
-fun searchBookWildSearch(stringbook: String): ArrayList<String> {
-    var foundbook = ArrayList<String>()
-    for (book in arrBook) {
-        if (book.contains(stringbook, true)) {
-            foundbook.add(book)
+            arrBook.add(name)
+            activity.Logger().log.info { "Book has been successfully saved." }
         }
     }
-    if (foundbook.isEmpty()) {
-        activity.Logger().log.warn { "No Record" }
-    } else {
-        activity.Logger().log.info { "Number of record found : ${foundbook.size}" }
-    }
 
-    return foundbook
-}
+    fun editBook(name: String) {
+        var isfound = false
+        var indexAt = 0
 
-fun searchBookName(arrname: ArrayList<String>): ArrayList<String> {
-    var foundbook = ArrayList<String>()
-    for (name in arrname) {
-        for (book in arrBook) {
+        for ((index, book) in arrBook.withIndex()) {
             if (book.equals(name, true)) {
+                isfound = true
+                activity.Logger().log.info { "Book <$book> found at index $index" }
+                indexAt = index
+            }
+        }
+        if (!isfound) {
+            do {
+                print("Please enter Book Name to update: ")
+                var book = readLine() ?: ""
+                book = book.replace("\\s".toRegex(), "")
+                if (book.isEmpty()) {
+                    activity.Logger().log.info { "Invalid empty input. Please try again!" }
+                }
+            } while (book.isEmpty())
+            arrBook[indexAt] = name
+            activity.Logger().log.info { "Book has been successfully updated." }
+        } else {
+            activity.Logger().log.warn { "Record not found!" }
+        }
+    }
+
+    fun removeBook(name: String) {
+        var isfound = false
+        var indexAt = 0
+        for ((index, book) in arrBook.withIndex()) {
+            if (book.equals(book, true)) {
+                isfound = true
+                activity.Logger().log.info { "Book <$book> found at index -- $index" }
+                indexAt = index
+            }
+        }
+        if (isfound) {
+            print("Do you really want to delete the book record? [Y|N] : ")
+            var confirm = readLine() ?: "Y"
+            if (confirm[0].equals('Y', true) || confirm.equals("Yes", true)) {
+                arrBook.removeAt(indexAt)
+            }
+            activity.Logger().log.info { "Book has been successfully deleted." }
+        } else {
+            activity.Logger().log.warn { "Record not found!" }
+        }
+    }
+
+    fun countBooks(): Int {
+        return arrBook.size
+    }
+
+    fun searchBookWildSearch(stringbook: String): ArrayList<String> {
+        var foundbook = ArrayList<String>()
+        for (book in arrBook) {
+            if (book.contains(stringbook, true)) {
                 foundbook.add(book)
             }
         }
-    }
-    if (foundbook.isEmpty()) {
-        activity.Logger().log.warn { "No Record" }
-    } else {
-        activity.Logger().log.info { "Number of record found : ${foundbook.size}" }
+        if (foundbook.isEmpty()) {
+            activity.Logger().log.warn { "No Record" }
+        } else {
+            activity.Logger().log.info { "Number of record found : ${foundbook.size}" }
+        }
+
+        return foundbook
     }
 
-    return foundbook
-}
+    fun searchBookName(arrname: ArrayList<String>): ArrayList<String> {
+        var foundbook = ArrayList<String>()
+        for (name in arrname) {
+            for (book in arrBook) {
+                if (book.equals(name, true)) {
+                    foundbook.add(book)
+                }
+            }
+        }
+        if (foundbook.isEmpty()) {
+            activity.Logger().log.warn { "No Record" }
+        } else {
+            activity.Logger().log.info { "Number of record found : ${foundbook.size}" }
+        }
 
-fun showBooks() {
-    var index: Int = 0
-    println("List of Strudents")
-    println("Index\tName")
-    for (book in arrBook) {
-        println("$index \t\t$book")
-        index++
+        return foundbook
+    }
+
+    fun showBooks() {
+        var index: Int = 0
+        println("List of Strudents")
+        println("Index\tName")
+        for (book in arrBook) {
+            println("$index \t\t$book")
+            index++
+        }
     }
 }
