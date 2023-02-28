@@ -15,9 +15,16 @@ import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Date
+import kotlin.jvm.Throws
 import kotlin.system.exitProcess
 
 
+sealed class StudentArrayException(message: String): Exception(message){
+    sealed class ArrayExemption(message: String): Exception(message){
+        class LimitArrayExemption(message: String): ArrayExemption(message)
+        class EmptyArrayExemption(message: String): ArrayExemption(message)
+    }
+}
 class ArrayExemption(message: String) : Exception(message)
 class Activity_06_a {
 
@@ -36,33 +43,46 @@ class Activity_06_a {
 //    var arrStudentMasterStudent = ArrayList<MasterStudent>()
 
     constructor() {
-        showmenu()
+//        showmenu()
     }
 
+
     fun checkStudentGrades(arrPerson: ArrayList<Person>) {
-        if (arrPerson.size > 10) throw ArrayExemption("Invalid Input")
-        else if (arrPerson.size == 0) throw ArrayExemption("Incomplete grades")
+        if (arrPerson.size > 10) throw StudentArrayException.ArrayExemption.LimitArrayExemption("Invalid Input")
+        else if (arrPerson.size == 0) throw StudentArrayException.ArrayExemption.EmptyArrayExemption("Incomplete grades")
         else
             for (person in arrPerson) {
                 when (person) {
                     is Student -> {
-                        activity.Logger().log.info { "print grade" }
+                        activity.Logger().log.info { "STUDENT" }
+                        val student = person as Student
+                        student.fullname()
+                        student.showdetails()
                     }
 
                     is UnderGraduateStudent -> {
-                        activity.Logger().log.info { "print grade" }
+                        activity.Logger().log.info { "UNDERGRADUATE" }
+                        val undergraduate = person as UnderGraduateStudent
+                        undergraduate.fullname()
+                        undergraduate.showdetails()
                     }
 
                     is GraduateStudent -> {
-                        activity.Logger().log.info { "print grade" }
+                        activity.Logger().log.info { "GRADUATE" }
+                        val graduate = person as GraduateStudent
+                        graduate.fullname()
+                        graduate.showdetails()
                     }
 
                     is MasterStudent -> {
-                        activity.Logger().log.info { "print grade" }
+                        activity.Logger().log.info { "MASTER STUDENT" }
+                        val master = person as MasterStudent
+                        master.fullname()
+                        master.showdetails()
                     }
+
                     else ->
                         activity.Logger().log.info { "record not found!" }
-
                 }
             }
 
@@ -90,12 +110,27 @@ class Activity_06_a {
                 addstudent() //function to add student
             } else if (menu == 2) {
                 showstudents()
-            } else if (menu == 3) {
-                exitProcess(0)  //function to terminate the program
             }
+            /*else if (menu == 3) {
+                exitProcess(0)  //function to terminate the program
+            }*/
 
         } while (menu in 1..2)
 
+    }
+
+    private fun setgrade(status: StudentStatus): Double {
+        var grade: Double = 0.0
+        if (status == StudentStatus.GRADUATED) {
+            do {
+                println("Please enter score/grade :")
+                grade = readLine()!!.toDouble()
+                if (grade == null) {
+                    activity.Logger().log.warn { "Please indicate score/grade :" }
+                }
+            } while (grade == null)
+        }
+        return grade
     }
 
     private fun addstudent() {
@@ -150,31 +185,48 @@ class Activity_06_a {
 
             do {
                 activity.Logger().log.info { "Please Enter Birthyear:" }
-                year = readLine()!!.toInt()
+                year = try {
+                    readLine()!!.toInt()
+                } catch (e: Exception) {
+                    println(e.message)
+                    0
+                }
                 if (year == null) {
                     activity.Logger().log.warn { "Please indicate Birthyear." }
-                }
-                if (year <= 0) {
-                    activity.Logger().log.warn { "Invalid Birthyear." }
+                } else {
+                    if (year <= 0) {
+                        activity.Logger().log.warn { "Invalid Birthyear." }
+                    }
                 }
             } while (year == null || year <= 0)
 
 
             do {
                 activity.Logger().log.info { "Please Enter Birthmonth:" }
-                month = readLine()!!.toInt()
+                month = try {
+                    readLine()!!.toInt()
+                } catch (e: Exception) {
+                    println(e.message)
+                    0
+                }
                 if (month == null) {
                     activity.Logger().log.warn { "Please indicate Birthmonth." }
-                }
-                if (month <= 0 || month > 12) {
-                    activity.Logger().log.warn { "Invalid Birthmonth." }
+                } else {
+                    if (month < 0 || month > 12) {
+                        activity.Logger().log.warn { "Invalid Birthmonth." }
+                    }
                 }
             } while (month == null || month <= 0 || month > 12)
 
             var invalidDay = false
             do {
                 activity.Logger().log.info { "Please Enter Birthday:" }
-                day = readLine()!!.toInt()
+                day = try {
+                    readLine()!!.toInt()
+                } catch (e: Exception) {
+                    println(e.message)
+                    0
+                }
                 if (day == null) {
                     activity.Logger().log.warn { "Please indicate Birthday." }
                     invalidDay = true
@@ -205,8 +257,9 @@ class Activity_06_a {
         var degree: String? = null
         var yearStart: Int? = null
         var yearEnd: Int? = null
-        var arrdegree = ArrayList<Degree>()
+        var arrdegree = ArrayList<Degree>(10)
         var status = StudentStatus.UNKNOWN
+        var grade: Double = 0.0
 
 //        "[1]NEW STUDENT [2]UNDERGRADUATE STUDENT [3]GRADUATE STUDENT [4]MASTER STUDENT [5]CANCEL"
         when (menu) {
@@ -228,6 +281,7 @@ class Activity_06_a {
                         println("Please enter Certificate Title:")
                         var certificate = readLine()
                         student.addCertificate(certificate ?: "UNKNOWN")
+
                         println("Do you want to add another certificate? [Y|N]")
                         var confirm = readLine() ?: "Y"
                     } while (confirm[0].equals('Y', true) || confirm.equals("Yes", true))
@@ -260,9 +314,9 @@ class Activity_06_a {
                         yearStart = setyeaStart()
                         yearEnd = setyearEnd()
                         status = setstatus(yearEnd)
+                        grade = setgrade(status)
 
-
-                        var degree = Degree(degree, yearStart, yearEnd, status)
+                        var degree = Degree(degree, yearStart, yearEnd, status, grade)
                         arrdegree.add(degree)
 
                         println("Do you want to add another degree? [Y|N]")
@@ -295,9 +349,9 @@ class Activity_06_a {
                         yearStart = setyeaStart()
                         yearEnd = setyearEnd()
                         status = setstatus(yearEnd)
+                        grade = setgrade(status)
 
-
-                        var degree = Degree(degree, yearStart, yearEnd, status)
+                        var degree = Degree(degree, yearStart, yearEnd, status, grade)
                         arrdegree.add(degree)
 
                         println("Do you want to add another degree? [Y|N]")
@@ -330,9 +384,9 @@ class Activity_06_a {
                         yearStart = setyeaStart()
                         yearEnd = setyearEnd()
                         status = setstatus(yearEnd)
+                        grade = setgrade(status)
 
-
-                        var degree = Degree(degree, yearStart, yearEnd, status)
+                        var degree = Degree(degree, yearStart, yearEnd, status, grade)
                         arrdegree.add(degree)
 
 
@@ -360,9 +414,7 @@ class Activity_06_a {
 
     }
 
-    @Throws(Exception::class)
     private fun addPerson(person: Person) {
-        throw Exception()
         this.arrPerson.add(person)
     }
 
@@ -421,10 +473,10 @@ class Activity_06_a {
                 activity.Logger().log.warn { e.message }
                 0
             }
-            if (yearStart == 0) {
+            if ((yearStart == 0) || (yearStart == null)) {
                 activity.Logger().log.warn { "Please indicate  Year start in Degree." }
             }
-        } while (yearStart == 0)
+        } while ((yearStart == 0) || (yearStart == null))
         return yearStart
     }
 
@@ -546,8 +598,9 @@ class Student(firstname: String, middlename: String, lastname: String, birthdate
     var yearEntered: String = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy"))
 
 
-    var certificatelist = ArrayList<String>()
+    var certificatelist = HashMap<String, Double>()
     var arrcollege = ArrayList<College>()
+
 
     constructor() : this("", "", "", Date())
 
@@ -565,9 +618,9 @@ class Student(firstname: String, middlename: String, lastname: String, birthdate
                 "Shool: ${college.collegeName} \n" +
                         "Year joined: ${college.year}"
             )
-            for (degree in college.degree) {
+            for (degree in college.degrees) {
                 println("${degree.degree}, ${degree.yearStart}(start), (${degree.yearEnd})(end)")
-                println("Status: ${degree.status}")
+                println("Status: ${degree.status}, Grade: ${degree.grade}")
             }
         }
     }
@@ -580,7 +633,20 @@ class Student(firstname: String, middlename: String, lastname: String, birthdate
     }
 
     override fun addCertificate(certificate: String) {
-        certificatelist.add(certificate)
+        if (certificate.isNullOrEmpty() || certificate.equals("UNKNOWN", true)) {
+            throw Exception("Invalid Empty or UNKNOWN certificate.")
+        }
+        var grade: Double? = null
+        do {
+            println("Please enter score/grade of Certificate :")
+            grade = readLine()!!.toDouble()
+            if (grade == null) {
+                activity.Logger().log.warn { "Please indicate score/grade of Certificate." }
+            }
+        } while (grade == null)
+
+        certificatelist.set(certificate, grade)
+
     }
 }
 
@@ -597,7 +663,7 @@ class UnderGraduateStudent(firstname: String, middlename: String, lastname: Stri
 
     fun addCollegeUnderGraduate(college: String?, yearJoined: Int?, degree: ArrayList<Degree>) {
         var college = College(college, yearJoined)
-        college.degree = degree
+        college.degrees = degree
         arrcollege.add(college)
     }
 
@@ -617,11 +683,13 @@ class UnderGraduateStudent(firstname: String, middlename: String, lastname: Stri
                 "Shool: ${college.collegeName} \n" +
                         "Year joined: ${college.year}"
             )
-            for (degree in college.degree) {
+            for (degree in college.degrees) {
                 if (degree.status != StudentStatus.GRADUATED) {
                     println("${degree.degree}, ${degree.yearStart}(start), (${degree.status})(end)")
+                    println("Status: ${degree.status}, Grade: ${degree.grade}")
                 } else {
                     println("${degree.degree}, ${degree.yearStart}(start), (${degree.yearEnd})(end)")
+//                    println("Status: ${degree.status}, Grade: ${degree.grade}")
                 }
             }
         }
@@ -637,7 +705,7 @@ class MasterStudent(firstname: String, middlename: String, lastname: String, bir
 
     fun addMasterDegree(college: String?, yearJoined: Int?, degree: ArrayList<Degree>) {
         var college = College(college, yearJoined)
-        college.degree = degree
+        college.degrees = degree
         arrcollege.add(college)
     }
 
@@ -651,9 +719,9 @@ class MasterStudent(firstname: String, middlename: String, lastname: String, bir
                 "Shool: ${college.collegeName} \n" +
                         "Year joined: ${college.year}"
             )
-            for (degree in college.degree) {
+            for (degree in college.degrees) {
                 println("${degree.degree}, ${degree.yearStart}(start), (${degree.yearEnd})(end)")
-                println("Status: ${degree.status}")
+                println("Status: ${degree.status}, Grade: ${degree.grade}")
 
             }
         }
@@ -669,7 +737,7 @@ class GraduateStudent(firstname: String, middlename: String, lastname: String, b
 
     fun addCollegeGraduate(college: String?, yearJoined: Int?, degree: ArrayList<Degree>) {
         var college = College(college, yearJoined)
-        college.degree = degree
+        college.degrees = degree
         arrcollege.add(college)
     }
 
@@ -682,9 +750,9 @@ class GraduateStudent(firstname: String, middlename: String, lastname: String, b
                 "Shool: ${college.collegeName} \n" +
                         "Year joined: ${college.year}"
             )
-            for (degree in college.degree) {
+            for (degree in college.degrees) {
                 println("${degree.degree}, ${degree.yearStart}(start), (${degree.yearEnd})(end)")
-                println("Status: ${degree.status}")
+                println("Status: ${degree.status}, Grade: ${degree.grade}")
             }
         }
     }
@@ -695,7 +763,7 @@ class College(
     var year: Int?
 ) {
 
-    var degree = ArrayList<Degree>()
+    var degrees = ArrayList<Degree>(10)
 
 }
 
@@ -703,7 +771,8 @@ data class Degree(
     var degree: String?,
     var yearStart: Int?,
     var yearEnd: Int?,
-    var status: StudentStatus?
+    var status: StudentStatus?,
+    var grade: Double,
 )
 
 /**
@@ -718,3 +787,4 @@ Example:
 Student 1, Computer Technician, Network Technician, Electrical Technician
 Student 2, Public Speaking, Debate, Advertising Article
  */
+

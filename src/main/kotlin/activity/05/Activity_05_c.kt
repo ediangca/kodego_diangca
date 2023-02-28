@@ -11,11 +11,14 @@ a - add to cart > add an item in the cart
 b - remove from cart > remove item in the cart
 c - check out cart > compute the total cost of the cart.
  * */
+
+import activity.`06`.Activity_06_c
 import java.text.DecimalFormat
 import java.time.format.DateTimeFormatter
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 import kotlin.system.exitProcess
+
 
 
 fun main() {
@@ -103,6 +106,7 @@ class Activity_05_c {
 //        var arrshakes = ArrayList<Shake>()
         sdata = Shake("Mango Graham", 30.0)
         sdata.size = "Small"
+        sdata.status = Availability.AVAILABLE
         sdata.ingredients.add("Graham")
         sdata.ingredients.add("Mango")
         sdata.ingredients.add("Sugar")
@@ -112,6 +116,7 @@ class Activity_05_c {
         arrshakes.add(sdata)
         sdata = Shake("Mango Graham", 40.0)
         sdata.size = "Medium"
+        sdata.status = Availability.AVAILABLE
         sdata.ingredients.add("Graham")
         sdata.ingredients.add("Mango")
         sdata.ingredients.add("Sugar")
@@ -121,6 +126,7 @@ class Activity_05_c {
         arrshakes.add(sdata)
         sdata = Shake("Mango Graham", 50.0)
         sdata.size = "Large"
+        sdata.status = Availability.AVAILABLE
         sdata.ingredients.add("Graham")
         sdata.ingredients.add("Mango")
         sdata.ingredients.add("Sugar")
@@ -130,6 +136,7 @@ class Activity_05_c {
         arrshakes.add(sdata)
         sdata = Shake("Avocado", 30.0)
         sdata.size = "Small"
+        sdata.status = Availability.AVAILABLE
         sdata.ingredients.add("Avocado")
         sdata.ingredients.add("Sugar")
         sdata.ingredients.add("Condensada")
@@ -138,6 +145,7 @@ class Activity_05_c {
         arrshakes.add(sdata)
         sdata = Shake("Avocado", 40.0)
         sdata.size = "Medium"
+        sdata.status = Availability.AVAILABLE
         sdata.ingredients.add("Avocado")
         sdata.ingredients.add("Sugar")
         sdata.ingredients.add("Condensada")
@@ -146,6 +154,7 @@ class Activity_05_c {
         arrshakes.add(sdata)
         sdata = Shake("Avocado", 50.0)
         sdata.size = "Large"
+        sdata.status = Availability.AVAILABLE
         sdata.ingredients.add("Avocado")
         sdata.ingredients.add("Sugar")
         sdata.ingredients.add("Condensada")
@@ -156,54 +165,63 @@ class Activity_05_c {
 //        var arrjuices = ArrayList<Juices>()
         jdata = Juices("Apple Juice", 10.0)
         jdata.size = "Small"
+        jdata.status = Availability.AVAILABLE
         jdata.ingredients.add("Water")
         jdata.ingredients.add("Apple")
         jdata.ingredients.add("Sugar")
         arrjuices.add(jdata)
         jdata = Juices("Apple Juice", 15.0)
         jdata.size = "Medium"
+        jdata.status = Availability.AVAILABLE
         jdata.ingredients.add("Water")
         jdata.ingredients.add("Apple")
         jdata.ingredients.add("Sugar")
         arrjuices.add(jdata)
         jdata = Juices("Apple Juice", 25.0)
         jdata.size = "Large"
+        jdata.status = Availability.AVAILABLE
         jdata.ingredients.add("Water")
         jdata.ingredients.add("Apple")
         jdata.ingredients.add("Sugar")
         arrjuices.add(jdata)
         jdata = Juices("Orange Juice", 10.0)
         jdata.size = "Small"
+        jdata.status = Availability.AVAILABLE
         jdata.ingredients.add("Water")
         jdata.ingredients.add("Apple")
         jdata.ingredients.add("Sugar")
         arrjuices.add(jdata)
         jdata = Juices("Orange Juice", 15.0)
         jdata.size = "Medium"
+        jdata.status = Availability.AVAILABLE
         jdata.ingredients.add("Water")
         jdata.ingredients.add("Apple")
         jdata.ingredients.add("Sugar")
         arrjuices.add(jdata)
         jdata = Juices("Orange Juice", 25.0)
         jdata.size = "Large"
+        jdata.status = Availability.AVAILABLE
         jdata.ingredients.add("Water")
         jdata.ingredients.add("Apple")
         jdata.ingredients.add("Sugar")
         arrjuices.add(jdata)
         jdata = Juices("Buko Juice", 10.0)
         jdata.size = "Small"
+        jdata.status = Availability.AVAILABLE
         jdata.ingredients.add("Water")
         jdata.ingredients.add("Apple")
         jdata.ingredients.add("Sugar")
         arrjuices.add(jdata)
         jdata = Juices("Buko Juice", 15.0)
         jdata.size = "Medium"
+        jdata.status = Availability.AVAILABLE
         jdata.ingredients.add("Water")
         jdata.ingredients.add("Apple")
         jdata.ingredients.add("Sugar")
         arrjuices.add(jdata)
         jdata = Juices("Buko Juice", 25.0)
         jdata.size = "Large"
+        jdata.status = Availability.AVAILABLE
         jdata.ingredients.add("Water")
         jdata.ingredients.add("Apple")
         jdata.ingredients.add("Sugar")
@@ -212,6 +230,7 @@ class Activity_05_c {
 //        var arrsandwiches = ArrayList<Sandwiches>()
         swdata = Sandwiches("Foot Long", 25.0)
         swdata.type = "Regular"
+        jdata.status = Availability.AVAILABLE
         swdata.ingredients.add("Bread")
         swdata.ingredients.add("Chicken Hot Dog")
         swdata.ingredients.add("Sauce")
@@ -222,6 +241,7 @@ class Activity_05_c {
         arrsandwiches.add(swdata)
         swdata = Sandwiches("Foot Long", 50.0)
         swdata.type = "Special"
+        jdata.status = Availability.AVAILABLE
         swdata.ingredients.add("Bread")
         swdata.ingredients.add("2Chicken Hot Dog")
         swdata.ingredients.add("Sauce")
@@ -236,6 +256,7 @@ class Activity_05_c {
         arrsandwiches.add(swdata)
         swdata = Sandwiches("Chicken Time", 30.0)
         swdata.type = "Regular"
+        jdata.status = Availability.AVAILABLE
         swdata.ingredients.add("Bread")
         swdata.ingredients.add("Chicken Fatty")
         swdata.ingredients.add("Sauce")
@@ -246,6 +267,7 @@ class Activity_05_c {
         arrsandwiches.add(swdata)
         swdata = Sandwiches("Chicken Time", 65.0)
         swdata.type = "Special"
+        jdata.status = Availability.AVAILABLE
         swdata.ingredients.add("Bread")
         swdata.ingredients.add("2 Chicken Fatty")
         swdata.ingredients.add("Sauce")
@@ -260,6 +282,7 @@ class Activity_05_c {
         arrsandwiches.add(swdata)
         swdata = Sandwiches("Minute Burger", 35.0)
         swdata.type = "Regular"
+        jdata.status = Availability.AVAILABLE
         swdata.ingredients.add("Bread")
         swdata.ingredients.add("Beef Fatty")
         swdata.ingredients.add("Sauce")
@@ -271,6 +294,7 @@ class Activity_05_c {
         arrsandwiches.add(swdata)
         swdata = Sandwiches("Minute Burger", 75.0)
         swdata.type = "Special"
+        jdata.status = Availability.AVAILABLE
         swdata.ingredients.add("Bread")
         swdata.ingredients.add("2 Beef Fatty")
         swdata.ingredients.add("Sauce")
@@ -287,6 +311,7 @@ class Activity_05_c {
 //        var arrsalads = ArrayList<Salads>()
         saldata = Salads("Curry Chicken Salad with Grapes", 120.0)
         saldata.type = "Regular"
+        jdata.status = Availability.AVAILABLE
         saldata.ingredients.add("1/2 cup butter")
         saldata.ingredients.add("2 cups mayonnaise")
         saldata.ingredients.add("1/4 cup minced garlic")
@@ -302,6 +327,7 @@ class Activity_05_c {
         arrsalads.add(saldata)
         saldata = Salads("Curry Chicken Salad with Grapes", 175.0)
         saldata.type = "Special"
+        jdata.status = Availability.AVAILABLE
         saldata.ingredients.add("1/2 cup butter")
         saldata.ingredients.add("2 cups mayonnaise")
         saldata.ingredients.add("1/4 cup minced garlic")
@@ -379,7 +405,7 @@ class Activity_05_c {
 
             do {
                 println("-------------------------------------- MENU ---------------------------------------------------")
-                println("[1]NEW CUSTOMER\t[2]UPDATE CUSTOMER ORDER\t[3]SHOW CART\t[4]UPDATE STATUS\t[5]DISPLAY ORDERS []DISPLAY FOOD\t[6]EXIT")
+                println("[1]NEW CUSTOMER\t[2]UPDATE CUSTOMER ORDER\t[3]SHOW CART\t[4]UPDATE STATUS\t[5]DISPLAY ORDERS\t[6]DISPLAY FOOD\t[7]CHECKOUT\t[6]EXIT")
                 menu = readLine()!!.toInt()
                 if (menu == null) {
                     activity.Logger().log.warn { "Please indicate Menu!" }
@@ -398,11 +424,40 @@ class Activity_05_c {
                 showorders()    //function to show all order
             } else if (menu == 6) {
                 showFood()  //function to  show food by category
-            } else if (menu == 6) {
-                exitProcess(0)  //function to terminate the program
+            } else if (menu == 7) {
+                checkOut()
+            } else if (menu == 8) {
+//                exitProcess(0)  //function to terminate the program
             }
 
-        } while (menu in 1..5)
+        } while (menu in 1..7)
+    }
+
+    private fun checkOut() {
+        var paymentType: Int
+        do {
+            println(
+                "Please select payment type: \n" +
+                        "[1]${PaymentType.PAYMENT_CENTER}\n" +
+                        "[2]${PaymentType.DEBIT_CREDIT}\n" +
+                        "[3]${PaymentType.BANK}\n" +
+                        "[4]${PaymentType.COD}\n"
+            )
+            paymentType = try {
+                readLine()!!.toInt()
+            } catch (e: Exception) {
+                println(e.message)
+                0
+            }
+        } while (paymentType == 0)
+        cart.paymentType = when (paymentType) {
+            1 -> PaymentType.PAYMENT_CENTER
+            2 -> PaymentType.DEBIT_CREDIT
+            3 -> PaymentType.BANK
+            4 -> PaymentType.COD
+            else -> PaymentType.UNKNOWN
+        }
+        Activity_06_c(this).validateCart(customer, cart)
     }
 
     private fun addcustomer() {
@@ -807,6 +862,9 @@ class Activity_05_c {
             }
         } while (mobileno.isNullOrEmpty())
 
+        activity.Logger().log.info { "Please Enter Address:" }
+        address = readLine() ?: ""
+
         var found = false
 
         for ((customer, cart) in orders) {
@@ -838,6 +896,7 @@ class Cart(var customer: Customer?) {
     var Id: Int = 0
     var items = HashMap<Product, Float>()
     var status = OrderStatus.UNKNOWN
+    var paymentType = PaymentType.UNKNOWN
 
     constructor() : this(null)
 
@@ -893,11 +952,11 @@ class Cart(var customer: Customer?) {
         for ((product, qty) in items) {
             if (product.name.equals(item, true)) {
                 found = true
-                details = "Order Details: ${product.toString()} , Quantity: $qty \tTotalL:${product.price*qty}"
+                details = "Order Details: ${product.toString()} , Quantity: $qty \tTotalL:${product.price * qty}"
                 productfound = product
             }
         }
-        if(found){
+        if (found) {
             println(details)
             items.remove(productfound)
             activity.Logger().log.info { "Item Successfully removed to cart." }
@@ -908,7 +967,7 @@ class Cart(var customer: Customer?) {
 
 data class Customer(
     var firstName: String, var lastName: String,
-    var address: String, var mobileno: String
+    var address: String?, var mobileno: String
 ) {
     constructor() : this("", "", "", "")
 
@@ -942,6 +1001,7 @@ class FreshFruits(name: String, price: Double) : Product(name, price) {
     var qty: Float = 0.0F
     var unit: String = "piece"
     var weight: Double = 0.0
+    var isCOD: Boolean = false
 
     //    add 1 year
 //    var dateexp: LocalDate = LocalDate.now().plusDays(365)
@@ -953,6 +1013,8 @@ class Shake(name: String, price: Double) : Product(name, price) {
     var size: String = "Small"
     var ingredients = ArrayList<String>()
     var addon = ArrayList<String>()
+    var status: Availability = Availability.NOT_AVAILABLE
+    var isCOD: Boolean = true
 
     constructor() : this("", 0.0)
 }
@@ -960,6 +1022,8 @@ class Shake(name: String, price: Double) : Product(name, price) {
 class Juices(name: String, price: Double) : Product(name, price) {
     var size: String = "Small"
     var ingredients = ArrayList<String>()
+    var status: Availability = Availability.NOT_AVAILABLE
+    var isCOD: Boolean = true
 
     constructor() : this("", 0.0)
 }
@@ -968,6 +1032,8 @@ class Sandwiches(name: String, price: Double) : Product(name, price) {
     var type: String = "Regular"
     var ingredients = ArrayList<String>()
     var addon = ArrayList<String>()
+    var status: Availability = Availability.NOT_AVAILABLE
+    var isCOD: Boolean = true
 
     constructor() : this("", 0.0)
 }
@@ -977,8 +1043,23 @@ class Salads(name: String, price: Double) : Product(name, price) {
     var dressing: String = ""
     var ingredients = ArrayList<String>()
     var addon = ArrayList<String>()
+    var status: Availability = Availability.NOT_AVAILABLE
+    var isCOD: Boolean = false
 
     constructor() : this("", 0.0)
+}
+
+enum class PaymentType {
+    COD,
+    PAYMENT_CENTER,
+    BANK,
+    DEBIT_CREDIT,
+    UNKNOWN
+}
+
+enum class Availability {
+    AVAILABLE,
+    NOT_AVAILABLE,
 }
 
 enum class OrderStatus {

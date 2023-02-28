@@ -59,6 +59,11 @@ open class Publication {
         this.title = title
         this.description = description
     }
+
+    fun showdetails(): String {
+        return "Publication(title='$title', description='$description', date='$date')"
+    }
+
 }
 
 class Book(title: String, description: String) : Publication(title, description) {
