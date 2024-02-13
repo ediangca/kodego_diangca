@@ -12,23 +12,23 @@ fun main() {
 
     needhehlp = readLine().toString()
 
-    if(needhehlp.lowercase() == "y"){
+  /*  if(needhehlp.lowercase() == "y"){
         println("How may I help you?")
     }else if(needhehlp.lowercase() == "n"){
         println("Don't forget I m here..")
     }else{
         println("Oh okay..")
-    }
+    }*/
 
-    println("Thank you very much..")
 
 //    working with when
 
-//    when(needhehlp.lowercase()){
-//        "n" -> println("How may I help you?")
-//        "y" -> println("Don't forget I m here..")
-//        else -> println("Thank you very much..")
-//    }
+    when(needhehlp.lowercase()){
+        "n" -> println("How may I help you?")
+        "y" -> println("Don't forget I m here..")
+        else -> println("Thank you very much..")
+    }
+    println("Thank you very much..")
 
 
 }
