@@ -2,7 +2,7 @@ package discussion.control_statements
 
 fun main(){
     repeat(5){
-        println("Repeat Message!")
+        println("Repeat Message! $it")
     }
 
     repeat(2){ value ->

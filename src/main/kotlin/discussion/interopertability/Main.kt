@@ -7,5 +7,6 @@ fun main(){
     person.address = "Marikina"
     person.name = "Marco Valmores"
 
+    person.length
     println("${person.name} is from ${person.address}")
 }

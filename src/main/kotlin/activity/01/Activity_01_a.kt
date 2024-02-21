@@ -3,7 +3,9 @@ package activity.`01`
 You are tasked to automate an inventory system for a grocery.
 Identify the items that can be bought in a grocery store.
 After listing the different items, identify the characteristics of the items.
-You are also tasked to group the items in categories to help manage the grocery.  Use the proper data types.
+You are also tasked to group the items in categories to help manage the grocery.
+
+Use the proper data types.
 */
 
 fun main() {
@@ -13,6 +15,7 @@ fun main() {
     var progress: String? = null
 
     var opt: String? = null
+
 
     do {
 
@@ -43,11 +46,10 @@ fun main() {
         println("Remarks: $progress")
 
         println("Do you want to ask another student? [Y|N]")
-        opt = readLine().toString()
+        opt = readLine()?.let { "n" }
 
     } while (when (opt.toString().substring(0, 1).uppercase()) {
             "Y" -> true
             else -> false
-        }
-    )
+        })
 }

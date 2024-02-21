@@ -8,6 +8,33 @@ String
 Loops
 */
 
+
+fun main() {
+    var firstString: String? = ""
+
+
+    println("Please enter First String:")
+    firstString = readLine().toString()
+
+
+    var Uniquefirststr = ""
+
+    for (i in firstString.indices) {
+        var flag = 0
+        for (j in firstString.indices) {
+            // checking if two characters are equal
+            if (firstString[i] == firstString[j] && i != j) {
+                flag = 1
+                break
+            }
+        }
+        if (flag == 0)
+            Uniquefirststr += firstString[i]
+    }
+
+    println(Uniquefirststr)
+}
+/*
 fun main() {
 
     var firstString: String? = ""
@@ -62,3 +89,4 @@ fun main() {
     }
 
 }
+*/

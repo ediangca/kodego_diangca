@@ -2,13 +2,16 @@ package discussion.data_structures
 
 fun main(){
 
-//    String names[] = {"123", };
+//    String names[] = {"Marco", "Maricris", "Jose Marie", "Marichelle"};
      var arrNames = arrayOf<String>("Marco", "Maricris", "Jose Marie", "Marichelle")
 
     for(index in arrNames.indices)
         println("$index : ${arrNames[index]}")
 
     arrNames = arrayOf<String>("Marco1", "Maricris2", "Jose Marie3", "Marichelle4")
+
+
+
 
     for(index in arrNames.indices)
         println("$index : ${arrNames[index]}")

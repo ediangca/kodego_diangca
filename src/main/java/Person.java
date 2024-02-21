@@ -7,6 +7,8 @@ public class Person {
         return name;
     }
 
+    public int getLength(){return  name.length();}
+
     public void setName(String name) {
         this.name = name;
     }

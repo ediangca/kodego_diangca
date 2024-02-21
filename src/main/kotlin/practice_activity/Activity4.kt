@@ -10,11 +10,11 @@ fun main() {
     name = readLine().toString()
     println("Do you need any help? [Y|N]")
 
-    needhehlp = readLine().toString()
+    needhehlp = readLine()!!.lowercase()
 
-  /*  if(needhehlp.lowercase() == "y"){
+  /*  if(needhehlp == "y"){
         println("How may I help you?")
-    }else if(needhehlp.lowercase() == "n"){
+    }else if(needhehlp == "n"){
         println("Don't forget I m here..")
     }else{
         println("Oh okay..")

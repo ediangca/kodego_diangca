@@ -7,5 +7,5 @@ fun main(){
 
 
     for(name in arrNames)
-        println()
+        println(name)
 }

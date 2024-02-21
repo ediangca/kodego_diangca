@@ -1,12 +1,11 @@
 package discussion.nullable
 
-var systemName:String? = null
-var intValue:Int? = null
+var systemName: String? = null
+var intValue: Int? = null
 
-fun main(){
-    var username: String? = null
+fun main() {
+    var username: String? = "Juan";
     var fullname: String? = "Rosepal"
-
 //    if(username != null)
 //        println("Username Length : ${username.length}")
 //    if(fullname != null)
