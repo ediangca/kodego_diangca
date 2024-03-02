@@ -35,6 +35,7 @@ class Poultry{
     var expDate:LocalDate? = null
     var cost:Double? = null
     var srp:Double? = null
+    var isCertifiedHalal:Boolean? = null
 }
 class Fish{
     var type:String? = null

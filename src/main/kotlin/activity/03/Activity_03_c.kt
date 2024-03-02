@@ -15,39 +15,41 @@ Example Coke_01, Coke_02
 3. Create a function "checkOut". This will compute how many items have been checked out.
 4. Create a function "removefromCart"  that will accept a String and remove the input from the Hashmap. If there are multiple entries, remove all from the HashMap.
  **/
-fun main() {
 
-    var groceryproducts: ArrayList<String> =
-        arrayListOf(
-            "coke",
-            "sprite",
-            "royal",
-            "apple",
-            "orange",
-            "pineapple",
-            "banana",
-            "durian",
-            "jack-fruit",
-            "grapes",
-            "nagoya",
-            "atami",
-            "555",
-            "argentina",
-            "pancit-canton",
-            "lucky me",
-            "bear-brand",
-            "birch-tree",
-            "nescafe",
-            "kopiko",
-        )
-    var cart: HashMap<String, Int> = HashMap<String, Int>()
-    var order: String = ""
-    var qty: Int = 0
-    var menu: Int = 0
+
+var groceryproducts: ArrayList<String> =
+    arrayListOf(
+        "coke",
+        "sprite",
+        "royal",
+        "apple",
+        "orange",
+        "pineapple",
+        "banana",
+        "durian",
+        "jack-fruit",
+        "grapes",
+        "nagoya",
+        "atami",
+        "555",
+        "argentina",
+        "pancit-canton",
+        "lucky me",
+        "bear-brand",
+        "birch-tree",
+        "nescafe",
+        "kopiko",
+    )
+
+var cart: HashMap<String, Int> = HashMap()
+var order: String = ""
+var qty: Int = 0
+var menu: Int = 0
+
+fun main() {
 
     showgrocery(groceryproducts)
 
-    println("----- Simple Book Address book -----")
     do {
         println("Please select a menu \n [1]Add [2]Remove [3]showGrocery [4]showCart [5]Checkout [6]Exit")
 
@@ -71,7 +73,7 @@ fun main() {
             do {
                 print("Please Enter Item: ")
                 order = readLine() ?: "UNKNOWN"
-            } while (!checkavailabilty(groceryproducts, order))
+            } while (!checkAvailability(groceryproducts, order))
 
             print("Please enter Quantity to order: ")
             qty = try {
@@ -80,63 +82,63 @@ fun main() {
                 activity.Logger().log.error { e.message }
                 1
             }
-            addToCart(cart, order, qty)
+            addToCart(order, qty)
         }
         if (menu == 2) {
             print("Please Enter Item to remove: ")
             order = readLine() ?: "UNKNOWN"
-            removecart(cart, order)
+            removeCart(order)
         }
         if (menu == 3) {
             showgrocery(groceryproducts)
         }
         if (menu == 4) {
-            showCart(cart)
+            showCart()
         }
-        if(menu == 5){
-            checkout(groceryproducts, cart)
+        if (menu == 5) {
+            checkout()
         }
 
     } while (menu in 1..5)
 
 }
 
-fun checkout(groceryproducts: ArrayList<String>, cart: HashMap<String, Int>) {
+fun checkout() {
     var checkout = HashMap<String, Int>()
     var exist = false
     var noofentry = 0
-    var tqty = 0
+    var total_qty = 0 //Total Qty
     for (product in groceryproducts) {
-        tqty = 0
+        total_qty = 0
         exist = false
         noofentry = 0
         for ((item, qty) in cart) {
             if (product.length <= item.length) {
-                println(item.substring(0, product.length)+" == "+ product)
-                println("total qty : $tqty" )
+                println(item.substring(0, product.length) + " == " + product)
+                println("total qty : $total_qty")
                 if (item.substring(0, product.length) == product) {
-                    tqty += qty
+                    total_qty += qty
                     exist = true
                     noofentry++
                 }
             }
-            if(exist){
-                checkout.put(product, tqty)
+            if (exist) {
+                checkout.put(product, total_qty)
             }
         }
     }
-    tqty = 0
+    total_qty = 0
     println("Checkout -----------------------")
     println("Product | total Qty")
-    for ((order,qty) in checkout){
+    for ((order, qty) in checkout) {
         println("$order | $qty")
-        tqty += qty
+        total_qty += qty
     }
     println("---------------------------------------")
-    println("No. of item: ${checkout.size} \t Total Qty: $tqty")
+    println("No. of item: ${checkout.size} \t Total Qty: $total_qty")
 }
 
-fun addToCart(cart: HashMap<String, Int>, order: String, qty: Int) {
+fun addToCart(order: String, qty: Int) {
     var exist = false
     var noofentry = 0
     for ((item, qty) in cart) {
@@ -148,14 +150,15 @@ fun addToCart(cart: HashMap<String, Int>, order: String, qty: Int) {
         }
     }
     if (exist) {
-        cart.put("${order}_0$noofentry", qty)
+        var key = order +"_0"+ noofentry
+        cart.put(key, qty)
     } else {
         cart.put(order, qty)
     }
     activity.Logger().log.info { "Order has been added to cart." }
 }
 
-fun checkavailabilty(groceryproducts: ArrayList<String>, order: String): Boolean {
+fun checkAvailability(groceryproducts: ArrayList<String>, order: String): Boolean {
     var found = false
     for (product in groceryproducts) {
         if (product == order) {
@@ -168,23 +171,32 @@ fun checkavailabilty(groceryproducts: ArrayList<String>, order: String): Boolean
     return found
 }
 
-fun removecart(cart: HashMap<String, Int>, order: String) {
+fun removeCart(order: String) {
     var found = false
     var noofentry = 0
+    var itemlistfound = ArrayList<String>()
+
     for ((item, qty) in cart) {
-        if (item == order) {
+//        println("Item >>> ${item.substring(0,order.length)}")
+        if (item.substring(0,order.length).equals(order, true)) {
+            println("Item >>> $item")
             found = true
-            println("Removing order $item from cart..")
             if (noofentry > 0) {
-                cart.remove(item + "_0" + noofentry)
+                var key = (item)
+                itemlistfound.add(key)
             } else {
-                cart.remove(item)
+                itemlistfound.add(item)
             }
             noofentry++
         }
     }
     if (found) {
         activity.Logger().log.info { "No. of entry found and remove from cart : $noofentry" }
+        println("Removing item from cart..")
+        for (item in itemlistfound){
+            cart.remove(item)
+        }
+        activity.Logger().log.info { "Successfully item removed!" }
     } else {
         activity.Logger().log.error { "Item is not Found on cart! \nPlease try again." }
     }
@@ -200,10 +212,10 @@ fun showgrocery(groceryproducts: ArrayList<String>) {
     }
 }
 
-fun showCart(cart: HashMap<String, Int>) {
+fun showCart() {
     println("MY CART ---------------------------------------")
     println("Product | Quantity")
-    cart.toSortedMap()
+//    cart.toSortedMap()
     for ((index, product) in cart) {
         println("$index - $product ")
     }

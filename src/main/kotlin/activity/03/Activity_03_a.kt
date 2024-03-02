@@ -52,6 +52,7 @@ fun main() {
         } while (!validmenu)
 
         var name: String = ""
+        var confirm = ""
 
         if (menu == 1) {
             do {
@@ -63,7 +64,8 @@ fun main() {
                 }
             } while (name.isEmpty())
             addStudent(name)
-        } else if (menu == 2) {
+        }
+        else if (menu == 2) {
             do {
                 print("Please enter Student Name to edit: ")
                 name = readLine() ?: ""
@@ -73,7 +75,8 @@ fun main() {
                 }
             } while (name.isEmpty())
             editStudent(name)
-        } else if (menu == 3) {
+        }
+        else if (menu == 3) {
             do {
                 print("Please enter Student Name to edit: ")
                 name = readLine() ?: ""
@@ -94,7 +97,6 @@ fun main() {
             } while (name.isEmpty())
             if (isStudentInRecord(name)) println("Found Record!") else println("No Record!")
         } else if (menu == 6) {
-            var confirm = ""
             do {
                 print("Please enter String: ")
                 name = readLine() ?: ""
@@ -106,7 +108,6 @@ fun main() {
             for (student in searchStudentWildSearch(name))
                 println("$student")
         } else if (menu == 7) {
-            var confirm = ""
             do {
                 print("Please enter Student Name: ")
                 name = readLine() ?: ""

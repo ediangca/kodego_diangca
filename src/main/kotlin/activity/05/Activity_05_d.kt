@@ -225,6 +225,7 @@ class Ladder {
         this.to = to
     }
 
+
 }
 
 class Player {

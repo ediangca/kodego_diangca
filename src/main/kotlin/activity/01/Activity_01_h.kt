@@ -19,42 +19,50 @@ Input:
 
 
 fun main(args: Array<String>) {
-    var lowernum: Int? = 0
-    var biggernum: Int? = 0
+    var lowernum: Int? = null
+    var biggernum: Int? = null
 
-    println("Please lower value")
-    lowernum = try {
-        readLine()?.toInt() ?: 1
-    } catch (e: Exception) {
-        activity.Logger().log.error { e.message }
-        0
-    }
-    println("Please bigger value")
-    biggernum = try {
-        readLine()?.toInt() ?: 1
-    } catch (e: Exception) {
-        activity.Logger().log.error { e.message }
-        0
-    }
+    println("Please lower value <if null default value is 0")
+
+    do {
+        lowernum = try {
+            readLine()?.toInt()
+        } catch (e: Exception) {
+            activity.Logger().log.error { "${e.message}" }
+            0
+        }
+    } while (lowernum == 0)
+    do {
+        println("Please bigger value")
+        biggernum = try {
+            readLine()?.toInt()
+        } catch (e: Exception) {
+            activity.Logger().log.error { e.message }
+            0
+        }
+        if (lowernum!! > biggernum!!) {
+            activity.Logger().log.warn { "Bigger value must be bigger than lower value." }
+        }
+    } while (lowernum!! > biggernum!!)
+
     print("$lowernum,$biggernum ->")
 
     var flag = false
-    if (lowernum != null && biggernum != null) {
-        for (num in lowernum until biggernum) {
 
-            var flag = false
-            for (i in 2..num / 2) {
-                // condition for nonprime number
-                if (num % i == 0) {
-                    flag = true
-                    break
-                }
+    for (num in lowernum until biggernum) {
+
+        var flag = false
+        for (i in 2..num / 2) {
+            // condition for nonprime number
+            if (num % i == 0) {
+                flag = true
+                break
             }
-
-            if (!flag)
-                print("$num, ")
-
         }
+
+        if (!flag)
+            print("$num, ")
+
     }
 }
 

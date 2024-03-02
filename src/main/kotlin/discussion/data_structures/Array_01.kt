@@ -6,6 +6,6 @@ fun main(){
     val arrRandom:Array<Any?> = arrayOf("Marco", 42, false, null)
 
 
-    for(name in arrNames)
+    for(name in arrRandom)
         println(name)
 }

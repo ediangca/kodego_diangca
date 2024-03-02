@@ -20,7 +20,6 @@ import kotlin.collections.HashMap
 import kotlin.system.exitProcess
 
 
-
 fun main() {
     Activity_05_c()
 }
@@ -539,9 +538,12 @@ class Activity_05_c {
                         0.0f
                     }
                 } while (qty <= 0)
+                var confirm: String
+                do {
+                    println("Do you really want to add to cart the$existtext item? [Y|N]")
+                    confirm = readLine() ?: "Y"
+                } while (confirm.isEmpty())
 
-                println("Do you really want to add to cart the$existtext item? [Y|N]")
-                var confirm = readLine() ?: "Y"
                 if (confirm[0].equals('Y', true) || confirm.equals("Yes", true)) {
                     if (!itemexistincart) {
                         cart.addItem(Product(item!!, price), qty)

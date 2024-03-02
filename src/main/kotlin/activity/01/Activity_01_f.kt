@@ -6,6 +6,7 @@ Your application will print all unique characters in both Strings.
 Scope :
 String
 Loops
+
 */
 
 

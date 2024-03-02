@@ -262,7 +262,7 @@ class Student(firstname: String, middlename: String, lastname: String, birthdate
         certificatelist.add(certificate)
     }
 }
-
+//must be separated
 interface CertificateStudent {
     fun addCertificate(certificate: String)
 }

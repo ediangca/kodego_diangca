@@ -32,15 +32,26 @@ fun main(args: Array<String>) {
     var reverseString = ""
     var length = stringInput.length
 
-    for (i in (length - 1) downTo 0) {
-        reverseString = reverseString + stringInput[i]
-    }
+    when(length) {
+        0 -> {
+            logger.error { "The given string is empty" }
+        }
+        1 -> {
+            logger.error { "The given input consider as palindrome" }
+        }
+        else -> {
+//            for (i in (length - 1) downTo 0) {
+//                reverseString += stringInput[i]
+//            }
+            reverseString = stringInput.reversed()
 
-    // Case in-sensitive comparision
-    if (stringInput.equals(reverseString, ignoreCase = true)) {
-        logger.info{"The given string is Palindrome"}
-    } else {
-        logger.error{ "The given string is NOT a Palindrome" }
+            // Case in-sensitive comparision
+            if (stringInput.equals(reverseString, ignoreCase = true)) {
+                logger.info { "The given string is Palindrome" }
+            } else {
+                logger.info { "The given string is NOT a Palindrome" }
+            }
+        }
     }
 }
 

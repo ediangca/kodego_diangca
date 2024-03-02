@@ -60,7 +60,7 @@ open class Publication {
         this.description = description
     }
 
-    fun showdetails(): String {
+    fun showDetails(): String {
         return "Publication(title='$title', description='$description', date='$date')"
     }
 
