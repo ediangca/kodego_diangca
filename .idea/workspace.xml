@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa675f3b-b95f-4bb1-8b6e-8083993a3846" name="Changes" comment="KODEGO MD2P &#10;&#10;Working with Activity_07">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_a.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_a.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_b.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_b.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_f.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_f.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_g.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_g.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_h.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/01/Activity_01_h.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/03/Activity_03_a.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/03/Activity_03_a.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/03/Activity_03_c.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/03/Activity_03_c.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/04/Activity_04_c.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/04/Activity_04_c.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/05/Activity_05_a.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/05/Activity_05_a.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/05/Activity_05_b.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/05/Activity_05_b.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/05/Activity_05_c.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/05/Activity_05_c.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/05/Activity_05_d.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/05/Activity_05_d.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/activity/07/Activity_07_b.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/activity/07/Activity_07_b.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/discussion/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/discussion/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/discussion/data_structures/Array_01.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/discussion/data_structures/Array_01.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/discussion/nullable/Nullable_31.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/discussion/nullable/Nullable_31.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/practice_activity/Activity3.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/practice_activity/Activity3.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/Activity_06_b_Checker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/Activity_06_b_Checker.kt" afterDir="false" />
-    </list>
+    <list default="true" id="fa675f3b-b95f-4bb1-8b6e-8083993a3846" name="Changes" comment="Add main.kt" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +35,9 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -103,7 +83,7 @@
       <recent name="C:\Users\edian\IdeaProjects\MD2P\src\main\kotlin" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.Activity_06_b_Checker.checkBookStatus">
     <configuration name="Activity_06_b_Checker.checkBookStatus" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -460,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677603476906</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Add main.kt">
+      <created>1709372084868</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1709372084868</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -484,7 +471,8 @@
     <MESSAGE value="KODEGO MD2P &#10;&#10;Working with Activity_05" />
     <MESSAGE value="KODEGO MD2P &#10;&#10;Working with Activity_06_b" />
     <MESSAGE value="KODEGO MD2P &#10;&#10;Working with Activity_07" />
-    <option name="LAST_COMMIT_MESSAGE" value="KODEGO MD2P &#10;&#10;Working with Activity_07" />
+    <MESSAGE value="Add main.kt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add main.kt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
